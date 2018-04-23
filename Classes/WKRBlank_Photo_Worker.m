@@ -70,6 +70,11 @@
     // Options not used in this Worker
 }
 
+- (void)configure
+{
+    [super configure];
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)photoId
@@ -182,6 +187,70 @@
     block ? block(error) : (void)nil;
 }
 
+- (void)doFlagObject:(nonnull DAOPhoto*)photo
+          withAction:(nonnull NSString*)action
+             andText:(nonnull NSString*)text
+            andBlock:(nullable PTCLPhotoBlockVoidNSError)block
+{
+    if (self.nextPhotoWorker)
+    {
+        [self.nextPhotoWorker doFlagObject:photo
+                                withAction:action
+                                   andText:text
+                                  andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doUnflagObject:(nonnull DAOPhoto*)photo
+            withAction:(nonnull NSString*)action
+               andText:(nonnull NSString*)text
+              andBlock:(nullable PTCLPhotoBlockVoidNSError)block
+{
+    if (self.nextPhotoWorker)
+    {
+        [self.nextPhotoWorker doUnflagObject:photo
+                                  withAction:action
+                                     andText:text
+                                    andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doCheckFlagObject:(nonnull DAOPhoto*)photo
+               withAction:(nonnull NSString*)action
+                 andBlock:(nullable PTCLPhotoBlockVoidNSUIntegerNSError)block
+{
+    if (self.nextPhotoWorker)
+    {
+        [self.nextPhotoWorker doCheckFlagObject:photo
+                                     withAction:action
+                                       andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(0, error) : (void)nil;
+}
+
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
 - (void)doLoadItemForObject:(nonnull DAOPhoto*)photo
@@ -262,6 +331,52 @@
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
     block ? block(nil, error, nil) : (void)nil;
+}
+
+#pragma mark - Business Logic / Collection Items CRUD
+
+- (void)doLoadFlagsForObject:(nonnull DAOPhoto*)photo
+                 withActions:(nonnull NSArray<NSString*>*)actions
+                    andBlock:(nullable PTCLPhotoBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+              andUpdateBlock:(nullable PTCLPhotoBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextPhotoWorker)
+    {
+        [self.nextPhotoWorker doLoadFlagsForObject:photo
+                                       withActions:actions
+                                          andBlock:block
+                                    andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadMyFlagsForObject:(nonnull DAOPhoto*)photo
+                   withActions:(nonnull NSArray<NSString*>*)actions
+                      andBlock:(nullable PTCLPhotoBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+                andUpdateBlock:(nullable PTCLPhotoBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextPhotoWorker)
+    {
+        [self.nextPhotoWorker doLoadMyFlagsForObject:photo
+                                         withActions:actions
+                                            andBlock:block
+                                      andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
 }
 
 @end

@@ -72,12 +72,19 @@
     // Options not used in this Worker
 }
 
+- (void)configure
+{
+    [super configure];
+}
+
 #pragma mark - Business Logic
 
 + (CGSize)PTCLMediaLibraryMaximumSize
 {
     return PHImageManagerMaximumSize;
 }
+
+#pragma mark - Business Logic / Single Item CRUD
 
 - (BOOL)doCheckAuthorization
 {
@@ -105,6 +112,41 @@
     block ? block(error) : (void)nil;
 }
 
+#pragma mark - Business Logic / Single Item Relationship CRUD
+
+- (void)doLoadImage:(nonnull id)asset
+               size:(CGSize)size
+    completionBlock:(nullable PTCLMediaLibraryBlockVoidUIImageNSDictionary)block
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doLoadImage:asset
+                                            size:size
+                                 completionBlock:block];
+        return;
+    }
+    
+    block ? block(nil, @{ }) : (void)nil;
+}
+
+#pragma mark - Business Logic / Collection Items CRUD
+
+- (void)doLoadCollectionsWithCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doLoadCollectionsWithCompletionBlock:completionBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    completionBlock ? completionBlock(@[ ], error) : (void)nil;
+}
+
 - (void)doLoadImagesWithCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
@@ -121,19 +163,22 @@
     block ? block(nil, error) : (void)nil;
 }
 
-- (void)doLoadImage:(nonnull id)asset
-               size:(CGSize)size
-    completionBlock:(nullable PTCLMediaLibraryBlockVoidUIImageNSDictionary)block
+- (void)doLoadImagesForCollection:(nonnull id)assetCollection
+              withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
-        [self.nextMediaLibraryWorker doLoadImage:asset
-                                            size:size
-                                 completionBlock:block];
+        [self.nextMediaLibraryWorker doLoadImagesForCollection:assetCollection
+                                           withCompletionBlock:block];
         return;
     }
     
-    block ? block(nil, @{ }) : (void)nil;
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], error) : (void)nil;
 }
 
 @end

@@ -66,6 +66,11 @@
     // Options not used in this Worker
 }
 
+- (void)configure
+{
+    [super configure];
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)newsId
@@ -122,6 +127,116 @@
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
     block ? block(error) : (void)nil;
+}
+
+- (void)doFlagObject:(nonnull DAONews*)news
+          withAction:(nonnull NSString*)action
+             andText:(nonnull NSString*)text
+            andBlock:(nullable PTCLNewsBlockVoidNSError)block
+{
+    if (self.nextNewsWorker)
+    {
+        [self.nextNewsWorker doFlagObject:news
+                               withAction:action
+                                  andText:text
+                                 andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doUnflagObject:(nonnull DAONews*)news
+            withAction:(nonnull NSString*)action
+               andText:(nonnull NSString*)text
+              andBlock:(nullable PTCLNewsBlockVoidNSError)block
+{
+    if (self.nextNewsWorker)
+    {
+        [self.nextNewsWorker doUnflagObject:news
+                                 withAction:action
+                                    andText:text
+                                   andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doCheckFlagObject:(nonnull DAONews*)news
+               withAction:(nonnull NSString*)action
+                 andBlock:(nullable PTCLNewsBlockVoidNSUIntegerNSError)block
+{
+    if (self.nextNewsWorker)
+    {
+        [self.nextNewsWorker doCheckFlagObject:news
+                                    withAction:action
+                                      andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(0, error) : (void)nil;
+}
+
+#pragma mark - Business Logic / Collection Items CRUD
+
+- (void)doLoadFlagsForObject:(nonnull DAONews*)news
+                 withActions:(nonnull NSArray<NSString*>*)actions
+                    andBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+              andUpdateBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextNewsWorker)
+    {
+        [self.nextNewsWorker doLoadFlagsForObject:news
+                                      withActions:actions
+                                         andBlock:block
+                                   andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadMyFlagsForObject:(nonnull DAONews*)news
+                   withActions:(nonnull NSArray<NSString*>*)actions
+                      andBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+                andUpdateBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextNewsWorker)
+    {
+        [self.nextNewsWorker doLoadMyFlagsForObject:news
+                                        withActions:actions
+                                           andBlock:block
+                                     andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
 }
 
 @end

@@ -66,6 +66,11 @@
     // Options not used in this Worker
 }
 
+- (void)configure
+{
+    [super configure];
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)ratingId
@@ -202,6 +207,46 @@
     block ? block(nil, error, nil) : (void)nil;
 }
 
+- (void)doLoadLocationForObject:(nonnull DAORating*)rating
+                      withBlock:(nullable PTCLRatingBlockVoidDAOLocationNSErrorContinue)block
+                 andUpdateBlock:(nullable PTCLRatingBlockVoidDAOLocationNSError)updateBlock
+{
+    if (self.nextRatingWorker)
+    {
+        [self.nextRatingWorker doLoadLocationForObject:rating
+                                             withBlock:block
+                                        andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(nil, error, nil) : (void)nil;
+}
+
+- (void)doLoadReviewForObject:(nonnull DAORating*)rating
+                    withBlock:(nullable PTCLRatingBlockVoidDAOReviewNSErrorContinue)block
+               andUpdateBlock:(nullable PTCLRatingBlockVoidDAOReviewNSError)updateBlock
+{
+    if (self.nextRatingWorker)
+    {
+        [self.nextRatingWorker doLoadReviewForObject:rating
+                                           withBlock:block
+                                      andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(nil, error, nil) : (void)nil;
+}
+
 - (void)doLoadUserForObject:(nonnull DAORating*)rating
                   withBlock:(nullable PTCLRatingBlockVoidDAOUserNSErrorContinue)block
              andUpdateBlock:(nullable PTCLRatingBlockVoidDAOUserNSError)updateBlock
@@ -235,6 +280,50 @@
                                      withParameters:parameters
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadObjectsForLocation:(nonnull DAOLocation*)location
+                  withParameters:(nullable NSDictionary*)parameters
+                        andBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
+                  andUpdateBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextRatingWorker)
+    {
+        [self.nextRatingWorker doLoadObjectsForLocation:location
+                                         withParameters:parameters
+                                               andBlock:block
+                                         andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadObjectsForReview:(nonnull DAOReview*)review
+                withParameters:(nullable NSDictionary*)parameters
+                      andBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
+                andUpdateBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextRatingWorker)
+    {
+        [self.nextRatingWorker doLoadObjectsForReview:review
+                                       withParameters:parameters
+                                             andBlock:block
+                                       andUpdateBlock:updateBlock];
         return;
     }
     

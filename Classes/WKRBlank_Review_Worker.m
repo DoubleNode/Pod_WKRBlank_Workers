@@ -66,6 +66,11 @@
     // Options not used in this Worker
 }
 
+- (void)configure
+{
+    [super configure];
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)reviewId
@@ -144,6 +149,26 @@
 
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
+- (void)doLoadCreatorForObject:(nonnull DAOReview*)review
+                     withBlock:(nullable PTCLReviewBlockVoidDAOUserNSErrorContinue)block
+                andUpdateBlock:(nullable PTCLReviewBlockVoidDAOUserNSError)updateBlock
+{
+    if (self.nextReviewWorker)
+    {
+        [self.nextReviewWorker doLoadCreatorForObject:review
+                                            withBlock:block
+                                       andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(nil, error, nil) : (void)nil;
+}
+
 - (void)doLoadItemForObject:(nonnull DAOReview*)review
                   withBlock:(nullable PTCLReviewBlockVoidDAOItemNSErrorContinue)block
              andUpdateBlock:(nullable PTCLReviewBlockVoidDAOItemNSError)updateBlock
@@ -153,6 +178,46 @@
         [self.nextReviewWorker doLoadItemForObject:review
                                          withBlock:block
                                     andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(nil, error, nil) : (void)nil;
+}
+
+- (void)doLoadLocationForObject:(nonnull DAOReview*)review
+                      withBlock:(nullable PTCLReviewBlockVoidDAOLocationNSErrorContinue)block
+                 andUpdateBlock:(nullable PTCLReviewBlockVoidDAOLocationNSError)updateBlock
+{
+    if (self.nextReviewWorker)
+    {
+        [self.nextReviewWorker doLoadLocationForObject:review
+                                             withBlock:block
+                                        andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(nil, error, nil) : (void)nil;
+}
+
+- (void)doLoadPhotoForObject:(nonnull DAOReview*)review
+                   withBlock:(nullable PTCLReviewBlockVoidDAOPhotoNSErrorContinue)block
+              andUpdateBlock:(nullable PTCLReviewBlockVoidDAOPhotoNSError)updateBlock
+{
+    if (self.nextReviewWorker)
+    {
+        [self.nextReviewWorker doLoadPhotoForObject:review
+                                          withBlock:block
+                                     andUpdateBlock:updateBlock];
         return;
     }
     
@@ -197,6 +262,28 @@
                                      withParameters:parameters
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadObjectsForLocation:(nonnull DAOLocation*)location
+                  withParameters:(nullable NSDictionary*)parameters
+                        andBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
+                  andUpdateBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextReviewWorker)
+    {
+        [self.nextReviewWorker doLoadObjectsForLocation:location
+                                         withParameters:parameters
+                                               andBlock:block
+                                         andUpdateBlock:updateBlock];
         return;
     }
     

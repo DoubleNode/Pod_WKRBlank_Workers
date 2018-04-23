@@ -66,7 +66,50 @@
     // Options not used in this Worker
 }
 
+- (void)configure
+{
+    [super configure];
+}
+
 #pragma mark - Business Logic / Single Item CRUD
+
+- (void)doLoadObjectForId:(nonnull NSString*)messageId
+                withBlock:(nullable PTCLMessageBlockVoidDAOMessageNSErrorContinue)block
+           andUpdateBlock:(nullable PTCLMessageBlockVoidDAOMessageNSError)updateBlock
+{
+    if (self.nextMessageWorker)
+    {
+        [self.nextMessageWorker doLoadObjectForId:messageId
+                                        withBlock:block
+                                   andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(nil, error, nil) : (void)nil;
+}
+
+- (void)doDeleteObject:(nonnull DAOMessage*)message
+             withBlock:(nullable PTCLMessageBlockVoidBOOLNSError)block
+{
+    if (self.nextMessageWorker)
+    {
+        [self.nextMessageWorker doDeleteObject:message
+                                     withBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(NO, error) : (void)nil;
+}
 
 - (void)doSaveObject:(nonnull DAOMessage*)message
            withBlock:(nullable PTCLMessageBlockVoidDAOMessageNSError)block
@@ -84,6 +127,28 @@
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
     block ? block(nil, error) : (void)nil;
+}
+
+#pragma mark - Business Logic / Collection Items CRUD
+
+- (void)doLoadPhotosForObject:(nonnull DAOMessage*)message
+                    withBlock:(nullable PTCLMessageBlockVoidNSArrayDAOPhotoNSUIntegerNSUIntegerNSErrorContinue)block
+               andUpdateBlock:(nullable PTCLMessageBlockVoidNSArrayDAOPhotoNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextMessageWorker)
+    {
+        [self.nextMessageWorker doLoadPhotosForObject:message
+                                            withBlock:block
+                                       andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
 }
 
 @end

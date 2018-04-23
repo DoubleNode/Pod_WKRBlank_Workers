@@ -70,7 +70,12 @@
     // Options not used in this Worker
 }
 
-#pragma mark - Business Logic
+- (void)configure
+{
+    [super configure];
+}
+
+#pragma mark - Business Logic / Single Item CRUD
 
 - (BOOL)doCheckForAccessTokenError:(nullable NSData*)errorData
 {
@@ -167,6 +172,114 @@
     block ? block(nil, NO, error) : (void)nil;
 }
 
+- (void)doFlagObject:(nonnull DAOUser*)user
+          withAction:(nonnull NSString*)action
+             andText:(nonnull NSString*)text
+            andBlock:(nullable PTCLUserBlockVoidNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doFlagObject:user
+                               withAction:action
+                                  andText:text
+                                 andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doFlagObject:(nonnull DAOUser*)user
+             forUser:(nullable DAOUser*)flaggingUser
+          withAction:(nonnull NSString*)action
+             andText:(nonnull NSString*)text
+            andBlock:(nullable PTCLUserBlockVoidNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doFlagObject:user
+                                  forUser:flaggingUser
+                               withAction:action
+                                  andText:text
+                                 andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doDeleteFlag:(nonnull DAOFlag*)flag
+           forObject:(nonnull DAOUser*)user
+           withBlock:(nullable PTCLUserBlockVoidNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doDeleteFlag:flag
+                                forObject:user
+                                withBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doUnflagObject:(nonnull DAOUser*)user
+            withAction:(nonnull NSString*)action
+               andText:(nonnull NSString*)text
+              andBlock:(nullable PTCLUserBlockVoidNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doUnflagObject:user
+                                 withAction:action
+                                    andText:text
+                                   andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(error) : (void)nil;
+}
+
+- (void)doCheckFlagObject:(nonnull DAOUser*)user
+               withAction:(nonnull NSString*)action
+                 andBlock:(nullable PTCLUserBlockVoidNSUIntegerNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doCheckFlagObject:user
+                                    withAction:action
+                                      andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(0, error) : (void)nil;
+}
+
 - (void)doFollowUser:(nonnull DAOUser*)user
            withBlock:(nullable PTCLUserBlockVoidBOOLNSError)block
 {
@@ -192,6 +305,46 @@
     {
         [self.nextUserWorker doUnfollowUser:user
                                   withBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(NO, error) : (void)nil;
+}
+
+- (void)doTagObject:(nonnull DAOUser*)user
+            withTag:(nonnull NSString*)tag
+           andBlock:(nullable PTCLUserBlockVoidBOOLNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doTagObject:user
+                                 withTag:tag
+                                andBlock:block];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(NO, error) : (void)nil;
+}
+
+- (void)doUntagObject:(nonnull DAOUser*)user
+              withTag:(nonnull NSString*)tag
+             andBlock:(nullable PTCLUserBlockVoidBOOLNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doUntagObject:user
+                                   withTag:tag
+                                  andBlock:block];
         return;
     }
     
@@ -238,6 +391,8 @@
                                                    }];
     block ? block(nil, error) : (void)nil;
 }
+
+#pragma mark - Business Logic / Single Item Relationship CRUD
 
 - (void)doLoadAvatarForUser:(nonnull DAOUser*)user
                   withBlock:(nullable PTCLUserBlockVoidDAOPhotoNSError)block
@@ -393,6 +548,116 @@
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
     block ? block(NO, error) : (void)nil;
+}
+
+#pragma mark - Business Logic / Collection Items CRUD
+
+- (void)doLoadAllFlagsForObject:(nonnull DAOUser*)user
+                    withActions:(nonnull NSArray<NSString*>*)actions
+                       andBlock:(nullable PTCLUserBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+                 andUpdateBlock:(nullable PTCLUserBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doLoadAllFlagsForObject:user
+                                         withActions:actions
+                                            andBlock:block
+                                      andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadFlagsForObject:(nonnull DAOUser*)user
+                 withActions:(nonnull NSArray<NSString*>*)actions
+                    andBlock:(nullable PTCLUserBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+              andUpdateBlock:(nullable PTCLUserBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doLoadFlagsForObject:user
+                                      withActions:actions
+                                         andBlock:block
+                                   andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadMyFlagsForObject:(nonnull DAOUser*)user
+                   withActions:(nonnull NSArray<NSString*>*)actions
+                      andBlock:(nullable PTCLUserBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
+                andUpdateBlock:(nullable PTCLUserBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doLoadMyFlagsForObject:user
+                                        withActions:actions
+                                           andBlock:block
+                                     andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadTagsForObject:(nonnull DAOUser*)user
+                  withBlock:(nullable PTCLUserBlockVoidNSArrayNSStringNSUIntegerNSUIntegerNSErrorContinue)block
+             andUpdateBlock:(nullable PTCLUserBlockVoidNSArrayNSStringNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doLoadTagsForObject:user
+                                       withBlock:block
+                                  andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+}
+
+- (void)doLoadObjectsWithTag:(nonnull NSString*)tag
+              withParameters:(nullable NSDictionary*)parameters
+                    andBlock:(nullable PTCLUserBlockVoidNSArrayDAOUserNSUIntegerNSUIntegerNSErrorContinue)block
+              andUpdateBlock:(nullable PTCLUserBlockVoidNSArrayDAOUserNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doLoadObjectsWithTag:tag
+                                   withParameters:parameters
+                                         andBlock:block
+                                   andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
 }
 
 @end
