@@ -90,13 +90,13 @@
     block ? block(nil, error) : (void)nil;
 }
 
-- (void)doLoadImageWithUrl:(nonnull NSURL*)url
-                 withBlock:(nullable PTCLCacheBlockVoidUIImageNSDataNSErrorNSURL)block;
+- (void)doLoadImageForUrl:(nonnull NSURL*)url
+                withBlock:(nullable PTCLCacheBlockVoidIDNSError)block
 {
     if (self.nextCacheWorker)
     {
-        [self.nextCacheWorker doLoadImageWithUrl:url
-                                       withBlock:block];
+        [self.nextCacheWorker doLoadImageForUrl:url
+                                      withBlock:block];
         return;
     }
     
@@ -105,7 +105,7 @@
                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
-    block ? block(nil, nil, error, url) : (void)nil;
+    block ? block(nil, error) : (void)nil;
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)cacheId
