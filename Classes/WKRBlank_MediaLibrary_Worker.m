@@ -129,6 +129,91 @@
     block ? block(nil, @{ }) : (void)nil;
 }
 
+- (void)doSaveImage:(UIImage* _Nullable)image
+withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveImage:image
+                             withCompletionBlock:completionBlock];
+        return;
+    }
+    
+    completionBlock ? completionBlock(YES, nil) : (void)nil;
+}
+
+- (void)doSaveImage:(UIImage* _Nullable)image
+       toCollection:(nonnull id)assetCollection
+withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveImage:image
+                                    toCollection:assetCollection
+                             withCompletionBlock:completionBlock];
+        return;
+    }
+    
+    completionBlock ? completionBlock(YES, nil) : (void)nil;
+}
+
+- (void)doSaveImageFromUrl:(NSURL* _Nullable)imageUrl
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveImageFromUrl:imageUrl
+                                    withCompletionBlock:completionBlock];
+        return;
+    }
+    
+    completionBlock ? completionBlock(YES, nil) : (void)nil;
+}
+
+- (void)doSaveImageFromUrl:(NSURL* _Nullable)imageUrl
+              toCollection:(nonnull id)assetCollection
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveImageFromUrl:imageUrl
+                                           toCollection:assetCollection
+                                    withCompletionBlock:completionBlock];
+        return;
+    }
+    
+    completionBlock ? completionBlock(YES, nil) : (void)nil;
+}
+
+- (void)doSaveVideoFromUrl:(NSURL* _Nullable)videoUrl
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveVideoFromUrl:videoUrl
+                                    withCompletionBlock:completionBlock];
+        return;
+    }
+    
+    completionBlock ? completionBlock(YES, nil) : (void)nil;
+}
+
+- (void)doSaveVideoFromUrl:(NSURL* _Nullable)videoUrl
+              toCollection:(nonnull id)assetCollection
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveVideoFromUrl:videoUrl
+                                           toCollection:assetCollection
+                                    withCompletionBlock:completionBlock];
+        return;
+    }
+    
+    completionBlock ? completionBlock(YES, nil) : (void)nil;
+
+}
+
 #pragma mark - Business Logic / Collection Items CRUD
 
 - (void)doLoadCollectionsWithCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)completionBlock
