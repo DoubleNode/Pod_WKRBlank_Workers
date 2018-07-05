@@ -13,7 +13,7 @@
 @synthesize nextBaseWorker;
 @synthesize nextLocationWorker;
 
-#define ERROR_DOMAIN_CLASS      [NSString stringWithFormat:@"com.doublenode.rentmywardrobe.%@", NSStringFromClass([self class])]
+#define ERROR_DOMAIN_CLASS      [NSString stringWithFormat:@"com.doublenode.%@", NSStringFromClass([self class])]
 #define ERROR_UNKNOWN           1001
 #define ERROR_NOT_IMPLEMENTED   1002
 
