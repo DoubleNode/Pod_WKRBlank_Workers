@@ -114,6 +114,21 @@
 
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
+- (void)doLoadAudio:(nonnull id)asset
+               size:(CGSize)size
+    completionBlock:(nullable PTCLMediaLibraryBlockVoidNSURLNSDictionary)block
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doLoadAudio:asset
+                                            size:size
+                                 completionBlock:block];
+        return;
+    }
+    
+    block ? block(nil, @{ }) : (void)nil;
+}
+
 - (void)doLoadImage:(nonnull id)asset
                size:(CGSize)size
     completionBlock:(nullable PTCLMediaLibraryBlockVoidUIImageNSDictionary)block
@@ -129,98 +144,141 @@
     block ? block(nil, @{ }) : (void)nil;
 }
 
+- (void)doLoadVideo:(nonnull id)asset
+               size:(CGSize)size
+    completionBlock:(nullable PTCLMediaLibraryBlockVoidNSURLNSDictionary)block
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doLoadVideo:asset
+                                            size:size
+                                 completionBlock:block];
+        return;
+    }
+    
+    block ? block(nil, @{ }) : (void)nil;
+}
+
 - (void)doSaveImage:(UIImage* _Nullable)image
-withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doSaveImage:image
-                             withCompletionBlock:completionBlock];
+                             withCompletionBlock:block];
         return;
     }
     
-    completionBlock ? completionBlock(YES, nil) : (void)nil;
+    block ? block(YES, nil) : (void)nil;
 }
 
 - (void)doSaveImage:(UIImage* _Nullable)image
        toCollection:(nonnull id)assetCollection
-withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doSaveImage:image
                                     toCollection:assetCollection
-                             withCompletionBlock:completionBlock];
+                             withCompletionBlock:block];
         return;
     }
     
-    completionBlock ? completionBlock(YES, nil) : (void)nil;
+    block ? block(YES, nil) : (void)nil;
+}
+
+- (void)doSaveAudioFromUrl:(NSURL* _Nullable)videoUrl
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveAudioFromUrl:videoUrl
+                                    withCompletionBlock:block];
+        return;
+    }
+    
+    block ? block(YES, nil) : (void)nil;
+}
+
+- (void)doSaveAudioFromUrl:(NSURL* _Nullable)videoUrl
+              toCollection:(nonnull id)assetCollection
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
+{
+    if (self.nextMediaLibraryWorker)
+    {
+        [self.nextMediaLibraryWorker doSaveAudioFromUrl:videoUrl
+                                           toCollection:assetCollection
+                                    withCompletionBlock:block];
+        return;
+    }
+    
+    block ? block(YES, nil) : (void)nil;
 }
 
 - (void)doSaveImageFromUrl:(NSURL* _Nullable)imageUrl
-       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doSaveImageFromUrl:imageUrl
-                                    withCompletionBlock:completionBlock];
+                                    withCompletionBlock:block];
         return;
     }
     
-    completionBlock ? completionBlock(YES, nil) : (void)nil;
+    block ? block(YES, nil) : (void)nil;
 }
 
 - (void)doSaveImageFromUrl:(NSURL* _Nullable)imageUrl
               toCollection:(nonnull id)assetCollection
-       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doSaveImageFromUrl:imageUrl
                                            toCollection:assetCollection
-                                    withCompletionBlock:completionBlock];
+                                    withCompletionBlock:block];
         return;
     }
     
-    completionBlock ? completionBlock(YES, nil) : (void)nil;
+    block ? block(YES, nil) : (void)nil;
 }
 
 - (void)doSaveVideoFromUrl:(NSURL* _Nullable)videoUrl
-       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doSaveVideoFromUrl:videoUrl
-                                    withCompletionBlock:completionBlock];
+                                    withCompletionBlock:block];
         return;
     }
     
-    completionBlock ? completionBlock(YES, nil) : (void)nil;
+    block ? block(YES, nil) : (void)nil;
 }
 
 - (void)doSaveVideoFromUrl:(NSURL* _Nullable)videoUrl
               toCollection:(nonnull id)assetCollection
-       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlock
+       withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doSaveVideoFromUrl:videoUrl
                                            toCollection:assetCollection
-                                    withCompletionBlock:completionBlock];
+                                    withCompletionBlock:block];
         return;
     }
     
-    completionBlock ? completionBlock(YES, nil) : (void)nil;
+    block ? block(YES, nil) : (void)nil;
 
 }
 
 #pragma mark - Business Logic / Collection Items CRUD
 
-- (void)doLoadCollectionsWithCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)completionBlock
+- (void)doLoadCollectionsWithCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
-        [self.nextMediaLibraryWorker doLoadCollectionsWithCompletionBlock:completionBlock];
+        [self.nextMediaLibraryWorker doLoadCollectionsWithCompletionBlock:block];
         return;
     }
     
@@ -229,14 +287,16 @@ withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlo
                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
-    completionBlock ? completionBlock(@[ ], error) : (void)nil;
+    block ? block(@[ ], error) : (void)nil;
 }
 
-- (void)doLoadImagesWithCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
+- (void)doLoadImagesOfMediaTypes:(nullable NSArray*)mediaTypes
+             withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
-        [self.nextMediaLibraryWorker doLoadImagesWithCompletionBlock:block];
+        [self.nextMediaLibraryWorker doLoadImagesOfMediaTypes:mediaTypes
+                                          withCompletionBlock:block];
         return;
     }
     
@@ -249,11 +309,13 @@ withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)completionBlo
 }
 
 - (void)doLoadImagesForCollection:(nonnull id)assetCollection
+                     ofMediaTypes:(nullable NSArray*)mediaTypes
               withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
         [self.nextMediaLibraryWorker doLoadImagesForCollection:assetCollection
+                                                  ofMediaTypes:mediaTypes
                                            withCompletionBlock:block];
         return;
     }
