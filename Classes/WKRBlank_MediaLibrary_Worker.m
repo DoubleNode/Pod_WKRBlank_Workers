@@ -290,12 +290,12 @@ withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
     block ? block(@[ ], error) : (void)nil;
 }
 
-- (void)doLoadImagesOfMediaTypes:(nullable NSArray*)mediaTypes
+- (void)doLoadAssetsOfMediaTypes:(nullable NSArray*)mediaTypes
              withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
-        [self.nextMediaLibraryWorker doLoadImagesOfMediaTypes:mediaTypes
+        [self.nextMediaLibraryWorker doLoadAssetsOfMediaTypes:mediaTypes
                                           withCompletionBlock:block];
         return;
     }
@@ -308,13 +308,13 @@ withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidBOOLNSError)block
     block ? block(nil, error) : (void)nil;
 }
 
-- (void)doLoadImagesForCollection:(nonnull id)assetCollection
+- (void)doLoadAssetsForCollection:(nonnull id)assetCollection
                      ofMediaTypes:(nullable NSArray*)mediaTypes
               withCompletionBlock:(nullable PTCLMediaLibraryBlockVoidNSArrayNSError)block
 {
     if (self.nextMediaLibraryWorker)
     {
-        [self.nextMediaLibraryWorker doLoadImagesForCollection:assetCollection
+        [self.nextMediaLibraryWorker doLoadAssetsForCollection:assetCollection
                                                   ofMediaTypes:mediaTypes
                                            withCompletionBlock:block];
         return;
