@@ -73,16 +73,18 @@
 #pragma mark - Business Logic
 
 - (void)saveFileInBackgroundForUser:(nonnull DAOUser*)user
-                           withName:(nonnull NSString*)fileName
-                               data:(nonnull NSData*)data
-                              block:(nullable PTCLFileBlockVoidNSStringIDBOOLNSError)block
+                        andFilename:(nonnull NSString*)filename
+                        andMetadata:(nonnull NSDictionary*)metadata
+                            andData:(nonnull NSData*)data
+                          withBlock:(nullable PTCLFileBlockVoidNSStringIDBOOLNSError)block
 {
     if (self.nextFileWorker)
     {
         [self.nextFileWorker saveFileInBackgroundForUser:user
-                                                withName:fileName
-                                                    data:data
-                                                   block:block];
+                                             andFilename:filename
+                                             andMetadata:metadata
+                                                 andData:data
+                                               withBlock:block];
         return;
     }
     
