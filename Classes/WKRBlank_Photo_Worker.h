@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Photo_Worker : WKR_Base_Worker<PTCLPhoto_Protocol>
+@interface WKRBlank_Photo_Worker : WKRNET_Base_Worker<PTCLPhoto_Protocol>
 
 @end

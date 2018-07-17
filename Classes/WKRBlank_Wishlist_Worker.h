@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Wishlist_Worker : WKR_Base_Worker<PTCLWishlist_Protocol>
+@interface WKRBlank_Wishlist_Worker : WKRNET_Base_Worker<PTCLWishlist_Protocol>
 
 @end

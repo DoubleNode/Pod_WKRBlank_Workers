@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Rating_Worker : WKR_Base_Worker<PTCLRating_Protocol>
+@interface WKRBlank_Rating_Worker : WKRNET_Base_Worker<PTCLRating_Protocol>
 
 @end

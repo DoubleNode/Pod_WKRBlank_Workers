@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Location_Worker : WKR_Base_Worker<PTCLLocation_Protocol>
+@interface WKRBlank_Location_Worker : WKRNET_Base_Worker<PTCLLocation_Protocol>
 
 @end

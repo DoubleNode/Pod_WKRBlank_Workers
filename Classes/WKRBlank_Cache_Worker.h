@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Cache_Worker : WKR_Base_Worker<PTCLCache_Protocol>
+@interface WKRBlank_Cache_Worker : WKRNET_Base_Worker<PTCLCache_Protocol>
 
 @end

@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Auth_Worker : WKR_Base_Worker<PTCLAuth_Protocol>
+@interface WKRBlank_Auth_Worker : WKRNET_Base_Worker<PTCLAuth_Protocol>
 
 @end

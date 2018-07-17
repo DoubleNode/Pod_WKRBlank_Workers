@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Checkin_Worker : WKR_Base_Worker<PTCLCheckin_Protocol>
+@interface WKRBlank_Checkin_Worker : WKRNET_Base_Worker<PTCLCheckin_Protocol>
 
 @end

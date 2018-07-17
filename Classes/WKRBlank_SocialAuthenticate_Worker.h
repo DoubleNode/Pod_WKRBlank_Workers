@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_SocialAuthenticate_Worker : WKR_Base_Worker<PTCLSocialAuthenticate_Protocol>
+@interface WKRBlank_SocialAuthenticate_Worker : WKRNET_Base_Worker<PTCLSocialAuthenticate_Protocol>
 
 @end

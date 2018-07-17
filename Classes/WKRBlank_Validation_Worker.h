@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Validation_Worker : WKR_Base_Worker<PTCLValidation_Protocol>
+@interface WKRBlank_Validation_Worker : WKRNET_Base_Worker<PTCLValidation_Protocol>
 
 @end

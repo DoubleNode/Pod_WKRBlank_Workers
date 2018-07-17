@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_PasswordStrength_Worker : WKR_Base_Worker<PTCLPasswordStrength_Protocol>
+@interface WKRBlank_PasswordStrength_Worker : WKRNET_Base_Worker<PTCLPasswordStrength_Protocol>
 
 @end

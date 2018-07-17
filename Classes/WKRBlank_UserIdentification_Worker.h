@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_UserIdentification_Worker : WKR_Base_Worker<PTCLUserIdentification_Protocol>
+@interface WKRBlank_UserIdentification_Worker : WKRNET_Base_Worker<PTCLUserIdentification_Protocol>
 
 @end

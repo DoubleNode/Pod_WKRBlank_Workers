@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_MediaLibrary_Worker : WKR_Base_Worker<PTCLMediaLibrary_Protocol>
+@interface WKRBlank_MediaLibrary_Worker : WKRNET_Base_Worker<PTCLMediaLibrary_Protocol>
 
 @end

@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Favorite_Worker : WKR_Base_Worker<PTCLFavorite_Protocol>
+@interface WKRBlank_Favorite_Worker : WKRNET_Base_Worker<PTCLFavorite_Protocol>
 
 @end

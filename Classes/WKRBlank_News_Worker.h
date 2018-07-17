@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_News_Worker : WKR_Base_Worker<PTCLNews_Protocol>
+@interface WKRBlank_News_Worker : WKRNET_Base_Worker<PTCLNews_Protocol>
 
 @end
