@@ -90,11 +90,6 @@
     // Options not used in this Worker
 }
 
-- (void)configure {
-    <#code#>
-}
-
-
 #pragma mark - Business Logic
 
 - (BOOL)doValidateBirthday:(NSDate*)birthday
