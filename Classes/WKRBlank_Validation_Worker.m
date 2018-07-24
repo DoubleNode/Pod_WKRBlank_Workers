@@ -21,6 +21,26 @@
 #define ERROR_UNKNOWN           1001
 #define ERROR_NOT_IMPLEMENTED   1002
 
+@synthesize minimumBirthdayAge;
+@synthesize maximumBirthdayAge;
+
+@synthesize minimumHandleLength;
+@synthesize maximumHandleLength;
+
+@synthesize minimumNameLength;
+@synthesize maximumNameLength;
+
+@synthesize minimumNumberValue;
+@synthesize maximumNumberValue;
+
+@synthesize requiredPasswordStrength;
+
+@synthesize minimumPercentageValue;
+@synthesize maximumPercentageValue;
+
+@synthesize minimumUnsignedNumberValue;
+@synthesize maximumUnsignedNumberValue;
+
 + (instancetype _Nonnull)worker   {   return [self worker:nil]; }
 
 + (instancetype _Nonnull)worker:(nullable id<PTCLValidation_Protocol>)nextValidationWorker
@@ -69,6 +89,11 @@
     
     // Options not used in this Worker
 }
+
+- (void)configure {
+    <#code#>
+}
+
 
 #pragma mark - Business Logic
 
@@ -179,5 +204,18 @@
     
     return NO;
 }
+
+- (BOOL)doValidateUnsignedNumber:(NSString*)number
+                           error:(NSError**)error
+{
+    if (self.nextValidationWorker)
+    {
+        return [self.nextValidationWorker doValidateUnsignedNumber:number
+                                                             error:error];
+    }
+    
+    return NO;
+}
+
 
 @end
