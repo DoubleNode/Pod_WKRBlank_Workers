@@ -38,6 +38,15 @@
 		6ADDB8421E56449A001DB127 /* WKRBlank_UserIdentification_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADDB82A1E56449A001DB127 /* WKRBlank_UserIdentification_Worker.m */; };
 		6ADDB8431E56449A001DB127 /* WKRBlank_Validation_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADDB82C1E56449A001DB127 /* WKRBlank_Validation_Worker.m */; };
 		6ADDB8441E56449A001DB127 /* WKRBlank_Wishlist_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADDB82E1E56449A001DB127 /* WKRBlank_Wishlist_Worker.m */; };
+		6AFC3C512125FFF400D7A780 /* WKRBlank_Category_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C4F2125FFF400D7A780 /* WKRBlank_Category_Worker.m */; };
+		6AFC3C562125FFFD00D7A780 /* WKRBlank_Conversation_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C522125FFFC00D7A780 /* WKRBlank_Conversation_Worker.m */; };
+		6AFC3C572125FFFD00D7A780 /* WKRBlank_Contact_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C532125FFFD00D7A780 /* WKRBlank_Contact_Worker.m */; };
+		6AFC3C5A2126002500D7A780 /* WKRBlank_LineItem_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C582126002500D7A780 /* WKRBlank_LineItem_Worker.m */; };
+		6AFC3C5F2126006E00D7A780 /* WKRBlank_Notification_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C5C2126006D00D7A780 /* WKRBlank_Notification_Worker.m */; };
+		6AFC3C602126006E00D7A780 /* WKRBlank_Order_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C5E2126006E00D7A780 /* WKRBlank_Order_Worker.m */; };
+		6AFC3C632126009300D7A780 /* WKRBlank_PaymentAccount_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C622126009300D7A780 /* WKRBlank_PaymentAccount_Worker.m */; };
+		6AFC3C66212600B000D7A780 /* WKRBlank_Transaction_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C64212600B000D7A780 /* WKRBlank_Transaction_Worker.m */; };
+		6AFC3C69212600D200D7A780 /* WKRBlank_UserNotificationSetting_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC3C68212600D200D7A780 /* WKRBlank_UserNotificationSetting_Worker.m */; };
 		CE96C6B4F62092BB38F5863B /* Pods_WKRBlank_Workers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1E259BF35CF66E884780A6 /* Pods_WKRBlank_Workers.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +130,24 @@
 		6ADDB82C1E56449A001DB127 /* WKRBlank_Validation_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Validation_Worker.m; path = Classes/WKRBlank_Validation_Worker.m; sourceTree = "<group>"; };
 		6ADDB82D1E56449A001DB127 /* WKRBlank_Wishlist_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Wishlist_Worker.h; path = Classes/WKRBlank_Wishlist_Worker.h; sourceTree = "<group>"; };
 		6ADDB82E1E56449A001DB127 /* WKRBlank_Wishlist_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Wishlist_Worker.m; path = Classes/WKRBlank_Wishlist_Worker.m; sourceTree = "<group>"; };
+		6AFC3C4F2125FFF400D7A780 /* WKRBlank_Category_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Category_Worker.m; path = Classes/WKRBlank_Category_Worker.m; sourceTree = "<group>"; };
+		6AFC3C502125FFF400D7A780 /* WKRBlank_Category_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Category_Worker.h; path = Classes/WKRBlank_Category_Worker.h; sourceTree = "<group>"; };
+		6AFC3C522125FFFC00D7A780 /* WKRBlank_Conversation_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Conversation_Worker.m; path = Classes/WKRBlank_Conversation_Worker.m; sourceTree = "<group>"; };
+		6AFC3C532125FFFD00D7A780 /* WKRBlank_Contact_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Contact_Worker.m; path = Classes/WKRBlank_Contact_Worker.m; sourceTree = "<group>"; };
+		6AFC3C542125FFFD00D7A780 /* WKRBlank_Contact_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Contact_Worker.h; path = Classes/WKRBlank_Contact_Worker.h; sourceTree = "<group>"; };
+		6AFC3C552125FFFD00D7A780 /* WKRBlank_Conversation_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Conversation_Worker.h; path = Classes/WKRBlank_Conversation_Worker.h; sourceTree = "<group>"; };
+		6AFC3C582126002500D7A780 /* WKRBlank_LineItem_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_LineItem_Worker.m; path = Classes/WKRBlank_LineItem_Worker.m; sourceTree = "<group>"; };
+		6AFC3C592126002500D7A780 /* WKRBlank_LineItem_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_LineItem_Worker.h; path = Classes/WKRBlank_LineItem_Worker.h; sourceTree = "<group>"; };
+		6AFC3C5B2126006D00D7A780 /* WKRBlank_Notification_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Notification_Worker.h; path = Classes/WKRBlank_Notification_Worker.h; sourceTree = "<group>"; };
+		6AFC3C5C2126006D00D7A780 /* WKRBlank_Notification_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Notification_Worker.m; path = Classes/WKRBlank_Notification_Worker.m; sourceTree = "<group>"; };
+		6AFC3C5D2126006E00D7A780 /* WKRBlank_Order_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Order_Worker.h; path = Classes/WKRBlank_Order_Worker.h; sourceTree = "<group>"; };
+		6AFC3C5E2126006E00D7A780 /* WKRBlank_Order_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Order_Worker.m; path = Classes/WKRBlank_Order_Worker.m; sourceTree = "<group>"; };
+		6AFC3C612126009300D7A780 /* WKRBlank_PaymentAccount_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_PaymentAccount_Worker.h; path = Classes/WKRBlank_PaymentAccount_Worker.h; sourceTree = "<group>"; };
+		6AFC3C622126009300D7A780 /* WKRBlank_PaymentAccount_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_PaymentAccount_Worker.m; path = Classes/WKRBlank_PaymentAccount_Worker.m; sourceTree = "<group>"; };
+		6AFC3C64212600B000D7A780 /* WKRBlank_Transaction_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_Transaction_Worker.m; path = Classes/WKRBlank_Transaction_Worker.m; sourceTree = "<group>"; };
+		6AFC3C65212600B000D7A780 /* WKRBlank_Transaction_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_Transaction_Worker.h; path = Classes/WKRBlank_Transaction_Worker.h; sourceTree = "<group>"; };
+		6AFC3C67212600D100D7A780 /* WKRBlank_UserNotificationSetting_Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKRBlank_UserNotificationSetting_Worker.h; path = Classes/WKRBlank_UserNotificationSetting_Worker.h; sourceTree = "<group>"; };
+		6AFC3C68212600D200D7A780 /* WKRBlank_UserNotificationSetting_Worker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKRBlank_UserNotificationSetting_Worker.m; path = Classes/WKRBlank_UserNotificationSetting_Worker.m; sourceTree = "<group>"; };
 		8F1E259BF35CF66E884780A6 /* Pods_WKRBlank_Workers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WKRBlank_Workers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A532AA94AE5926F41C7D0FD7 /* Pods-WKRBlank_WorkersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WKRBlank_WorkersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WKRBlank_WorkersTests/Pods-WKRBlank_WorkersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3C3CCA740CBB5B668688975 /* Pods-WKRBlank_WorkersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WKRBlank_WorkersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WKRBlank_WorkersTests/Pods-WKRBlank_WorkersTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,14 +280,22 @@
 				6ADDB8081E56449A001DB127 /* WKRBlank_Auth_Worker.m */,
 				6ADDB8091E56449A001DB127 /* WKRBlank_Cache_Worker.h */,
 				6ADDB80A1E56449A001DB127 /* WKRBlank_Cache_Worker.m */,
+				6AFC3C502125FFF400D7A780 /* WKRBlank_Category_Worker.h */,
+				6AFC3C4F2125FFF400D7A780 /* WKRBlank_Category_Worker.m */,
 				6ADDB80B1E56449A001DB127 /* WKRBlank_Checkin_Worker.h */,
 				6ADDB80C1E56449A001DB127 /* WKRBlank_Checkin_Worker.m */,
+				6AFC3C542125FFFD00D7A780 /* WKRBlank_Contact_Worker.h */,
+				6AFC3C532125FFFD00D7A780 /* WKRBlank_Contact_Worker.m */,
+				6AFC3C552125FFFD00D7A780 /* WKRBlank_Conversation_Worker.h */,
+				6AFC3C522125FFFC00D7A780 /* WKRBlank_Conversation_Worker.m */,
 				6ADDB80D1E56449A001DB127 /* WKRBlank_Favorite_Worker.h */,
 				6ADDB80E1E56449A001DB127 /* WKRBlank_Favorite_Worker.m */,
 				6ADDB80F1E56449A001DB127 /* WKRBlank_File_Worker.h */,
 				6ADDB8101E56449A001DB127 /* WKRBlank_File_Worker.m */,
 				6ADDB8111E56449A001DB127 /* WKRBlank_Item_Worker.h */,
 				6ADDB8121E56449A001DB127 /* WKRBlank_Item_Worker.m */,
+				6AFC3C592126002500D7A780 /* WKRBlank_LineItem_Worker.h */,
+				6AFC3C582126002500D7A780 /* WKRBlank_LineItem_Worker.m */,
 				6ADDB8131E56449A001DB127 /* WKRBlank_Location_Worker.h */,
 				6ADDB8141E56449A001DB127 /* WKRBlank_Location_Worker.m */,
 				6ADDB8151E56449A001DB127 /* WKRBlank_MediaLibrary_Worker.h */,
@@ -269,8 +304,14 @@
 				6ADDB8181E56449A001DB127 /* WKRBlank_Message_Worker.m */,
 				6ADDB8191E56449A001DB127 /* WKRBlank_News_Worker.h */,
 				6ADDB81A1E56449A001DB127 /* WKRBlank_News_Worker.m */,
+				6AFC3C5B2126006D00D7A780 /* WKRBlank_Notification_Worker.h */,
+				6AFC3C5C2126006D00D7A780 /* WKRBlank_Notification_Worker.m */,
+				6AFC3C5D2126006E00D7A780 /* WKRBlank_Order_Worker.h */,
+				6AFC3C5E2126006E00D7A780 /* WKRBlank_Order_Worker.m */,
 				6ADDB81B1E56449A001DB127 /* WKRBlank_PasswordStrength_Worker.h */,
 				6ADDB81C1E56449A001DB127 /* WKRBlank_PasswordStrength_Worker.m */,
+				6AFC3C612126009300D7A780 /* WKRBlank_PaymentAccount_Worker.h */,
+				6AFC3C622126009300D7A780 /* WKRBlank_PaymentAccount_Worker.m */,
 				6ADDB81D1E56449A001DB127 /* WKRBlank_Photo_Worker.h */,
 				6ADDB81E1E56449A001DB127 /* WKRBlank_Photo_Worker.m */,
 				6ADDB81F1E56449A001DB127 /* WKRBlank_Rating_Worker.h */,
@@ -279,12 +320,16 @@
 				6ADDB8221E56449A001DB127 /* WKRBlank_Review_Worker.m */,
 				6ADDB8231E56449A001DB127 /* WKRBlank_SocialAuthenticate_Worker.h */,
 				6ADDB8241E56449A001DB127 /* WKRBlank_SocialAuthenticate_Worker.m */,
+				6AFC3C65212600B000D7A780 /* WKRBlank_Transaction_Worker.h */,
+				6AFC3C64212600B000D7A780 /* WKRBlank_Transaction_Worker.m */,
 				6ADDB8251E56449A001DB127 /* WKRBlank_User_Worker.h */,
 				6ADDB8261E56449A001DB127 /* WKRBlank_User_Worker.m */,
 				6ADDB8271E56449A001DB127 /* WKRBlank_UserDevice_Worker.h */,
 				6ADDB8281E56449A001DB127 /* WKRBlank_UserDevice_Worker.m */,
 				6ADDB8291E56449A001DB127 /* WKRBlank_UserIdentification_Worker.h */,
 				6ADDB82A1E56449A001DB127 /* WKRBlank_UserIdentification_Worker.m */,
+				6AFC3C67212600D100D7A780 /* WKRBlank_UserNotificationSetting_Worker.h */,
+				6AFC3C68212600D200D7A780 /* WKRBlank_UserNotificationSetting_Worker.m */,
 				6ADDB82B1E56449A001DB127 /* WKRBlank_Validation_Worker.h */,
 				6ADDB82C1E56449A001DB127 /* WKRBlank_Validation_Worker.m */,
 				6ADDB82D1E56449A001DB127 /* WKRBlank_Wishlist_Worker.h */,
@@ -530,26 +575,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFC3C572125FFFD00D7A780 /* WKRBlank_Contact_Worker.m in Sources */,
 				6ADDB8401E56449A001DB127 /* WKRBlank_User_Worker.m in Sources */,
 				6ADDB83A1E56449A001DB127 /* WKRBlank_News_Worker.m in Sources */,
+				6AFC3C66212600B000D7A780 /* WKRBlank_Transaction_Worker.m in Sources */,
 				6ADDB8301E56449A001DB127 /* WKRBlank_Analytics_Worker.m in Sources */,
+				6AFC3C512125FFF400D7A780 /* WKRBlank_Category_Worker.m in Sources */,
 				6ADDB83E1E56449A001DB127 /* WKRBlank_Review_Worker.m in Sources */,
 				6ADDB7D31E56442A001DB127 /* ViewController.m in Sources */,
 				6ADDB8371E56449A001DB127 /* WKRBlank_Location_Worker.m in Sources */,
 				6ADDB83F1E56449A001DB127 /* WKRBlank_SocialAuthenticate_Worker.m in Sources */,
+				6AFC3C5A2126002500D7A780 /* WKRBlank_LineItem_Worker.m in Sources */,
+				6AFC3C562125FFFD00D7A780 /* WKRBlank_Conversation_Worker.m in Sources */,
 				6ADDB8381E56449A001DB127 /* WKRBlank_MediaLibrary_Worker.m in Sources */,
 				6ADDB8421E56449A001DB127 /* WKRBlank_UserIdentification_Worker.m in Sources */,
 				6ADDB7D01E56442A001DB127 /* AppDelegate.m in Sources */,
 				6ADDB8351E56449A001DB127 /* WKRBlank_File_Worker.m in Sources */,
 				6ADDB8411E56449A001DB127 /* WKRBlank_UserDevice_Worker.m in Sources */,
 				6ADDB8321E56449A001DB127 /* WKRBlank_Cache_Worker.m in Sources */,
+				6AFC3C69212600D200D7A780 /* WKRBlank_UserNotificationSetting_Worker.m in Sources */,
 				6ADDB82F1E56449A001DB127 /* WKRBlank_Activity_Worker.m in Sources */,
 				6ADDB8431E56449A001DB127 /* WKRBlank_Validation_Worker.m in Sources */,
 				6ADDB8361E56449A001DB127 /* WKRBlank_Item_Worker.m in Sources */,
+				6AFC3C632126009300D7A780 /* WKRBlank_PaymentAccount_Worker.m in Sources */,
+				6AFC3C5F2126006E00D7A780 /* WKRBlank_Notification_Worker.m in Sources */,
 				6ADDB8341E56449A001DB127 /* WKRBlank_Favorite_Worker.m in Sources */,
 				6ADDB83C1E56449A001DB127 /* WKRBlank_Photo_Worker.m in Sources */,
 				6ADDB8331E56449A001DB127 /* WKRBlank_Checkin_Worker.m in Sources */,
 				6ADDB8391E56449A001DB127 /* WKRBlank_Message_Worker.m in Sources */,
+				6AFC3C602126006E00D7A780 /* WKRBlank_Order_Worker.m in Sources */,
 				6ADDB83D1E56449A001DB127 /* WKRBlank_Rating_Worker.m in Sources */,
 				6ADDB7CD1E56442A001DB127 /* main.m in Sources */,
 				6ADDB8441E56449A001DB127 /* WKRBlank_Wishlist_Worker.m in Sources */,
