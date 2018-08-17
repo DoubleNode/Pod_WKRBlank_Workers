@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Order_Worker : WKR_Base_Worker<PTCLOrder_Protocol>
+@interface WKRBlank_Order_Worker : WKRNET_Base_Worker<PTCLOrder_Protocol>
 
 @end

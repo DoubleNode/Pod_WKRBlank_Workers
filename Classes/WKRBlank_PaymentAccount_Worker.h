@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_PaymentAccount_Worker : WKR_Base_Worker<PTCLPaymentAccount_Protocol>
+@interface WKRBlank_PaymentAccount_Worker : WKRNET_Base_Worker<PTCLPaymentAccount_Protocol>
 
 @end

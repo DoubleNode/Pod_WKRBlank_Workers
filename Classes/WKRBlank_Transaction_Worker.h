@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Transaction_Worker : WKR_Base_Worker<PTCLTransaction_Protocol>
+@interface WKRBlank_Transaction_Worker : WKRNET_Base_Worker<PTCLTransaction_Protocol>
 
 @end

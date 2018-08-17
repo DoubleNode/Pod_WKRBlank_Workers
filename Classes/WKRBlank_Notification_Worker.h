@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Notification_Worker : WKR_Base_Worker<PTCLNotification_Protocol>
+@interface WKRBlank_Notification_Worker : WKRNET_Base_Worker<PTCLNotification_Protocol>
 
 @end

@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_UserNotificationSetting_Worker : WKR_Base_Worker<PTCLUserNotificationSetting_Protocol>
+@interface WKRBlank_UserNotificationSetting_Worker : WKRNET_Base_Worker<PTCLUserNotificationSetting_Protocol>
 
 @end

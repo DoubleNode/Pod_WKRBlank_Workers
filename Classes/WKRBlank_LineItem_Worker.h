@@ -8,6 +8,6 @@
 
 @import DNCProtocols;
 
-@interface WKRBlank_Lineitem_Worker : WKR_Base_Worker<PTCLLineitem_Protocol>
+@interface WKRBlank_Lineitem_Worker : WKRNET_Base_Worker<PTCLLineitem_Protocol>
 
 @end
