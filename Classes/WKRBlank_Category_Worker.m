@@ -125,7 +125,7 @@
                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
-    block ? block(nil, error) : (void)nil;
+    block ? block(NO, error) : (void)nil;
 }
 
 - (void)doSaveOption:(nonnull NSString*)optionId
@@ -149,7 +149,7 @@
                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
                                                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
                                                    }];
-    block ? block(nil, error) : (void)nil;
+    block ? block(NO, error) : (void)nil;
 }
 
 - (void)doFollowObject:(nonnull DAOCategory*)category

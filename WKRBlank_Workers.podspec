@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WKRBlank_Workers"
-  s.version      = "0.2.11"
+  s.version      = "0.2.12"
   s.summary      = "A base collection of workers with assertions if called."
 
   s.description  = <<-DESC

@@ -172,6 +172,28 @@
 
 #pragma mark - Business Logic / Collection Items CRUD
 
+- (void)doLoadObjectsForLocation:(nonnull DAOLocation*)location
+                  withParameters:(nullable NSDictionary*)parameters
+                        andBlock:(nullable PTCLOrderBlockVoidNSArrayDAOOrderNSUIntegerNSUIntegerNSErrorContinue)block
+                  andUpdateBlock:(nullable PTCLOrderBlockVoidNSArrayDAOOrderNSUIntegerNSUIntegerNSError)updateBlock
+{
+    if (self.nextOrderWorker)
+    {
+        [self.nextOrderWorker doLoadObjectsForLocation:location
+                                        withParameters:parameters
+                                              andBlock:block
+                                        andUpdateBlock:updateBlock];
+        return;
+    }
+    
+    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                           code:ERROR_NOT_IMPLEMENTED
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
+                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
+                                                   }];
+    block ? block(@[ ], 0, 0, error, nil) : (updateBlock ? updateBlock(@[ ], 0, 0, error) : (void)nil);
+}
+
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
                     andBlock:(nullable PTCLOrderBlockVoidNSArrayDAOOrderNSUIntegerNSUIntegerNSErrorContinue)block
