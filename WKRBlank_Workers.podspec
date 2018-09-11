@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WKRBlank_Workers"
-  s.version      = "0.3.0"
+  s.version      = "0.3.1"
   s.summary      = "A base collection of workers with assertions if called."
 
   s.description  = <<-DESC
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "10.0"
 
-  s.source       = { :git => "https://github.com/DoubleNode/Pod_WKRBlank_Workers.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/postablur/Pod_WKRBlank_Workers.git", :tag => "#{s.version}" }
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
