@@ -57,7 +57,7 @@
         [self.nextUserIdentificationWorker enableOption:option];
     }
     
-    // Options not used in this Worker
+    [super enableOption:option];
 }
 
 - (void)disableOption:(nonnull NSString*)option
@@ -67,7 +67,7 @@
         [self.nextUserIdentificationWorker disableOption:option];
     }
     
-    // Options not used in this Worker
+    [super disableOption:option];
 }
 
 #pragma mark - Business Logic

@@ -53,7 +53,7 @@
         [self.nextItemWorker enableOption:option];
     }
     
-    // Options not used in this Worker
+    [super enableOption:option];
 }
 
 - (void)disableOption:(nonnull NSString*)option
@@ -63,7 +63,7 @@
         [self.nextItemWorker disableOption:option];
     }
     
-    // Options not used in this Worker
+    [super disableOption:option];
 }
 
 - (void)configure

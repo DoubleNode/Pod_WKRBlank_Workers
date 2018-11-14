@@ -57,7 +57,7 @@
         [self.nextUserDeviceWorker enableOption:option];
     }
     
-    // Options not used in this Worker
+    [super enableOption:option];
 }
 
 - (void)disableOption:(nonnull NSString*)option
@@ -67,7 +67,7 @@
         [self.nextUserDeviceWorker disableOption:option];
     }
     
-    // Options not used in this Worker
+    [super disableOption:option];
 }
 
 #pragma mark - Single Item CRUD

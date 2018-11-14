@@ -59,7 +59,7 @@
         [self.nextMediaLibraryWorker enableOption:option];
     }
     
-    // Options not used in this Worker
+    [super enableOption:option];
 }
 
 - (void)disableOption:(nonnull NSString*)option
@@ -69,7 +69,7 @@
         [self.nextMediaLibraryWorker disableOption:option];
     }
     
-    // Options not used in this Worker
+    [super disableOption:option];
 }
 
 - (void)configure
