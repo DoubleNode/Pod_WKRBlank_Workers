@@ -38,6 +38,9 @@
 @synthesize minimumPercentageValue;
 @synthesize maximumPercentageValue;
 
+@synthesize minimumPhoneLength;
+@synthesize maximumPhoneLength;
+
 @synthesize minimumUnsignedNumberValue;
 @synthesize maximumUnsignedNumberValue;
 
@@ -171,6 +174,18 @@
     {
         return [self.nextValidationWorker doValidatePercentage:percentage
                                                          error:error];
+    }
+    
+    return NO;
+}
+
+- (BOOL)doValidatePhone:(nonnull NSString*)phone
+                  error:(NSError*_Nullable*_Nullable)error
+{
+    if (self.nextValidationWorker)
+    {
+        return [self.nextValidationWorker doValidatePhone:phone
+                                                    error:error];
     }
     
     return NO;
