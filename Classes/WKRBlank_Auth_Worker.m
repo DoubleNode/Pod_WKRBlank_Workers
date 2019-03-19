@@ -69,13 +69,15 @@
 #pragma mark - Business Logic
 
 - (void)doLoadObjectForUser:(nonnull DAOUser*)user
-                  withBlock:(nullable PTCLAuthBlockVoidDAOAuthNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLAuthBlockVoidDAOAuthNSErrorContinue)block
              andUpdateBlock:(nullable PTCLAuthBlockVoidDAOAuthNSError)updateBlock
 {
     if (self.nextAuthWorker)
     {
         [self.nextAuthWorker doLoadObjectForUser:user
-                                       withBlock:block
+                                    withProgress:progressBlock
+                                        andBlock:block
                                   andUpdateBlock:updateBlock];
         return;
     }

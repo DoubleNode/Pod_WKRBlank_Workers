@@ -73,13 +73,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)conversationId
-                withBlock:(nullable PTCLConversationBlockVoidDAOConversationNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLConversationBlockVoidDAOConversationNSErrorContinue)block
            andUpdateBlock:(nullable PTCLConversationBlockVoidDAOConversationNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doLoadObjectForId:conversationId
-                                             withBlock:block
+                                          withProgress:progressBlock
+                                              andBlock:block
                                         andUpdateBlock:updateBlock];
         return;
     }
@@ -93,12 +95,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOConversation*)conversation
-             withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doDeleteObject:conversation
-                                          withBlock:block];
+                                       withProgress:progressBlock
+                                           andBlock:block];
         return;
     }
     
@@ -111,12 +115,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOConversation*)conversation
-           withBlock:(nullable PTCLConversationBlockVoidDAOConversationNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLConversationBlockVoidDAOConversationNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doSaveObject:conversation
-                                        withBlock:block];
+                                     withProgress:progressBlock
+                                         andBlock:block];
         return;
     }
     
@@ -132,13 +138,15 @@
 
 - (void)doAddCategory:(nonnull DAOCategory*)category
              toObject:(nonnull DAOConversation*)conversation
-            withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+         withProgress:(nullable PTCLProgressBlock)progressBlock
+             andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doAddCategory:category
                                           toObject:conversation
-                                         withBlock:block];
+                                      withProgress:progressBlock
+                                          andBlock:block];
         return;
     }
     
@@ -152,13 +160,15 @@
 
 - (void)doAddItem:(nonnull DAOItem*)item
          toObject:(nonnull DAOConversation*)conversation
-        withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+     withProgress:(nullable PTCLProgressBlock)progressBlock
+         andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doAddItem:item
                                       toObject:conversation
-                                     withBlock:block];
+                                  withProgress:progressBlock
+                                      andBlock:block];
         return;
     }
     
@@ -172,13 +182,15 @@
 
 - (void)doAddLocation:(nonnull DAOLocation*)location
              toObject:(nonnull DAOConversation*)conversation
-            withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+         withProgress:(nullable PTCLProgressBlock)progressBlock
+             andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doAddLocation:location
                                           toObject:conversation
-                                         withBlock:block];
+                                      withProgress:progressBlock
+                                          andBlock:block];
         return;
     }
     
@@ -192,13 +204,15 @@
 
 - (void)doAddUser:(nonnull DAOUser*)user
          toObject:(nonnull DAOConversation*)conversation
-        withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+     withProgress:(nullable PTCLProgressBlock)progressBlock
+         andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doAddUser:user
                                       toObject:conversation
-                                     withBlock:block];
+                                  withProgress:progressBlock
+                                      andBlock:block];
         return;
     }
     
@@ -212,13 +226,15 @@
 
 - (void)doRemoveCategory:(nonnull DAOCategory*)category
               fromObject:(nonnull DAOConversation*)conversation
-               withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doRemoveCategory:category
                                            fromObject:conversation
-                                            withBlock:block];
+                                         withProgress:progressBlock
+                                             andBlock:block];
         return;
     }
     
@@ -232,13 +248,15 @@
 
 - (void)doRemoveItem:(nonnull DAOItem*)item
           fromObject:(nonnull DAOConversation*)conversation
-           withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doRemoveItem:item
                                        fromObject:conversation
-                                        withBlock:block];
+                                     withProgress:progressBlock
+                                         andBlock:block];
         return;
     }
     
@@ -252,13 +270,15 @@
 
 - (void)doRemoveLocation:(nonnull DAOLocation*)location
               fromObject:(nonnull DAOConversation*)conversation
-               withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doRemoveLocation:location
                                            fromObject:conversation
-                                            withBlock:block];
+                                         withProgress:progressBlock
+                                             andBlock:block];
         return;
     }
     
@@ -272,13 +292,15 @@
 
 - (void)doRemoveUser:(nonnull DAOUser*)user
           fromObject:(nonnull DAOConversation*)conversation
-           withBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLConversationBlockVoidBOOLNSError)block
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doRemoveUser:user
                                        fromObject:conversation
-                                        withBlock:block];
+                                     withProgress:progressBlock
+                                         andBlock:block];
         return;
     }
     
@@ -293,13 +315,15 @@
 #pragma mark - Business Logic / Collection Items CRUD
 
 - (void)doLoadCategoriesForObject:(nonnull DAOConversation*)conversation
-                        withBlock:(nullable PTCLConversationBlockVoidNSArrayDAOCategoryNSUIntegerNSUIntegerNSErrorContinue)block
+                     withProgress:(nullable PTCLProgressBlock)progressBlock
+                         andBlock:(nullable PTCLConversationBlockVoidNSArrayDAOCategoryNSUIntegerNSUIntegerNSErrorContinue)block
                    andUpdateBlock:(nullable PTCLConversationBlockVoidNSArrayDAOCategoryNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doLoadCategoriesForObject:conversation
-                                                     withBlock:block
+                                                  withProgress:progressBlock
+                                                      andBlock:block
                                                 andUpdateBlock:updateBlock];
         return;
     }
@@ -313,13 +337,15 @@
 }
 
 - (void)doLoadItemsForObject:(nonnull DAOConversation*)conversation
-                   withBlock:(nullable PTCLConversationBlockVoidNSArrayDAOItemNSUIntegerNSUIntegerNSErrorContinue)block
+                withProgress:(nullable PTCLProgressBlock)progressBlock
+                    andBlock:(nullable PTCLConversationBlockVoidNSArrayDAOItemNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLConversationBlockVoidNSArrayDAOItemNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doLoadItemsForObject:conversation
-                                                withBlock:block
+                                             withProgress:progressBlock
+                                                 andBlock:block
                                            andUpdateBlock:updateBlock];
         return;
     }
@@ -333,13 +359,15 @@
 }
 
 - (void)doLoadLocationsForObject:(nonnull DAOConversation*)conversation
-                       withBlock:(nullable PTCLConversationBlockVoidNSArrayDAOLocationNSUIntegerNSUIntegerNSErrorContinue)block
+                    withProgress:(nullable PTCLProgressBlock)progressBlock
+                        andBlock:(nullable PTCLConversationBlockVoidNSArrayDAOLocationNSUIntegerNSUIntegerNSErrorContinue)block
                   andUpdateBlock:(nullable PTCLConversationBlockVoidNSArrayDAOLocationNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doLoadLocationsForObject:conversation
-                                                    withBlock:block
+                                                 withProgress:progressBlock
+                                                     andBlock:block
                                                andUpdateBlock:updateBlock];
         return;
     }
@@ -353,13 +381,15 @@
 }
 
 - (void)doLoadMessagesForObject:(nonnull DAOConversation*)conversation
-                      withBlock:(nullable PTCLConversationBlockVoidNSArrayDAOMessageNSUIntegerNSUIntegerNSErrorContinue)block
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLConversationBlockVoidNSArrayDAOMessageNSUIntegerNSUIntegerNSErrorContinue)block
                  andUpdateBlock:(nullable PTCLConversationBlockVoidNSArrayDAOMessageNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doLoadMessagesForObject:conversation
-                                                   withBlock:block
+                                                withProgress:progressBlock
+                                                    andBlock:block
                                               andUpdateBlock:updateBlock];
         return;
     }
@@ -373,13 +403,15 @@
 }
 
 - (void)doLoadUsersForObject:(nonnull DAOConversation*)conversation
-                   withBlock:(nullable PTCLConversationBlockVoidNSArrayDAOUserNSUIntegerNSUIntegerNSErrorContinue)block
+                withProgress:(nullable PTCLProgressBlock)progressBlock
+                    andBlock:(nullable PTCLConversationBlockVoidNSArrayDAOUserNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLConversationBlockVoidNSArrayDAOUserNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
         [self.nextConversationWorker doLoadUsersForObject:conversation
-                                                withBlock:block
+                                             withProgress:progressBlock
+                                                 andBlock:block
                                            andUpdateBlock:updateBlock];
         return;
     }
@@ -392,12 +424,14 @@
     block ? block(@[ ], 0, 0, error, nil) : (updateBlock ? updateBlock(@[ ], 0, 0, error) : (void)nil);
 }
 
-- (void)doLoadObjectsWithBlock:(nullable PTCLConversationBlockVoidNSArrayDAOConversationNSUIntegerNSUIntegerNSErrorContinue)block
+- (void)doLoadObjectsWithProgress:(nullable PTCLProgressBlock)progressBlock
+                         andBlock:(nullable PTCLConversationBlockVoidNSArrayDAOConversationNSUIntegerNSUIntegerNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLConversationBlockVoidNSArrayDAOConversationNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextConversationWorker)
     {
-        [self.nextConversationWorker doLoadObjectsWithBlock:block
+        [self.nextConversationWorker doLoadObjectsWithProgress:progressBlock
+                                                      andBlock:block
                                              andUpdateBlock:updateBlock];
         return;
     }

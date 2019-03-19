@@ -74,14 +74,16 @@
 
 - (void)doLoadObjectForId:(nonnull NSString*)userDeviceId
                 andUserId:(nonnull NSString*)userId
-                withBlock:(nullable PTCLUserDeviceBlockVoidDAOUserDeviceNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLUserDeviceBlockVoidDAOUserDeviceNSErrorContinue)block
            andUpdateBlock:(nullable PTCLUserDeviceBlockVoidDAOUserDeviceNSError)updateBlock
 {
     if (self.nextUserDeviceWorker)
     {
         [self.nextUserDeviceWorker doLoadObjectForId:userDeviceId
                                            andUserId:userId
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -95,12 +97,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOUserDevice*)userDevice
-             withBlock:(nullable PTCLUserDeviceBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLUserDeviceBlockVoidBOOLNSError)block
 {
     if (self.nextUserDeviceWorker)
     {
         [self.nextUserDeviceWorker doDeleteObject:userDevice
-                                        withBlock:block];
+                                     withProgress:progressBlock
+                                         andBlock:block];
         return;
     }
     
@@ -114,13 +118,15 @@
 
 - (void)doDeleteObjectForId:(nonnull NSString*)userDeviceId
                   andUserId:(nonnull NSString*)userId
-                  withBlock:(nullable PTCLUserDeviceBlockVoidBOOLNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLUserDeviceBlockVoidBOOLNSError)block
 {
     if (self.nextUserDeviceWorker)
     {
         [self.nextUserDeviceWorker doDeleteObjectForId:userDeviceId
                                              andUserId:userId
-                                             withBlock:block];
+                                          withProgress:progressBlock
+                                              andBlock:block];
         return;
     }
     
@@ -133,12 +139,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOUserDevice*)userDevice
-           withBlock:(nullable PTCLUserDeviceBlockVoidBOOLNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLUserDeviceBlockVoidBOOLNSError)block
 {
     if (self.nextUserDeviceWorker)
     {
         [self.nextUserDeviceWorker doSaveObject:userDevice
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -154,6 +162,7 @@
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLUserDeviceBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLUserDeviceBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -161,6 +170,7 @@
     {
         [self.nextUserDeviceWorker doLoadObjectsForUser:user
                                          withParameters:parameters
+                                            andProgress:progressBlock
                                                andBlock:block
                                          andUpdateBlock:updateBlock];
         return;

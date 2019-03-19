@@ -74,13 +74,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)locationId
-                withBlock:(nullable PTCLLocationBlockVoidDAOLocationNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLLocationBlockVoidDAOLocationNSErrorContinue)block
            andUpdateBlock:(nullable PTCLLocationBlockVoidDAOLocationNSError)updateBlock
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doLoadObjectForId:locationId
-                                         withBlock:block
+                                      withProgress:progressBlock
+                                          andBlock:block
                                     andUpdateBlock:updateBlock];
         return;
     }
@@ -94,12 +96,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOLocation*)location
-             withBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doDeleteObject:location
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -113,13 +117,15 @@
 
 - (void)doDeleteObject:(nonnull DAOLocation*)location
           fromCategory:(nonnull DAOCategory*)category
-             withBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doDeleteObject:location
                                    fromCategory:category
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -132,12 +138,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOLocation*)location
-           withBlock:(nullable PTCLLocationBlockVoidDAOLocationNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLLocationBlockVoidDAOLocationNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doSaveObject:location
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -151,13 +159,15 @@
 
 - (void)doSaveObject:(nonnull DAOLocation*)location
           inCategory:(nonnull DAOCategory*)category
-           withBlock:(nullable PTCLLocationBlockVoidDAOLocationNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLLocationBlockVoidDAOLocationNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doSaveObject:location
                                    inCategory:category
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -170,12 +180,14 @@
 }
 
 - (void)doSaveObjectOptions:(nonnull DAOLocation*)location
-                  withBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doSaveObjectOptions:location
-                                           withBlock:block];
+                                        withProgress:progressBlock
+                                            andBlock:block];
         return;
     }
     
@@ -191,7 +203,8 @@
               andKey:(nonnull NSString*)optionKey
             andValue:(nullable id)optionValue
          forLocation:(nonnull DAOLocation*)daoLocation
-           withBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
 {
     if (self.nextLocationWorker)
     {
@@ -199,7 +212,8 @@
                                        andKey:optionKey
                                      andValue:optionValue
                                   forLocation:daoLocation
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -214,6 +228,7 @@
 - (void)doFlagObject:(nonnull DAOLocation*)location
           withAction:(nonnull NSString*)action
              andText:(nonnull NSString*)text
+         andProgress:(nullable PTCLProgressBlock)progressBlock
             andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
@@ -221,6 +236,7 @@
         [self.nextLocationWorker doFlagObject:location
                                    withAction:action
                                       andText:text
+                                  andProgress:progressBlock
                                      andBlock:block];
         return;
     }
@@ -237,6 +253,7 @@
              forUser:(nullable DAOUser*)flaggingUser
           withAction:(nonnull NSString*)action
              andText:(nonnull NSString*)text
+         andProgress:(nullable PTCLProgressBlock)progressBlock
             andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
@@ -245,6 +262,7 @@
                                       forUser:flaggingUser
                                    withAction:action
                                       andText:text
+                                  andProgress:progressBlock
                                      andBlock:block];
         return;
     }
@@ -259,13 +277,15 @@
 
 - (void)doDeleteFlag:(nonnull DAOFlag*)flag
            forObject:(nonnull DAOLocation*)location
-           withBlock:(nullable PTCLLocationBlockVoidNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doDeleteFlag:flag
                                     forObject:location
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -280,6 +300,7 @@
 - (void)doUnflagObject:(nonnull DAOLocation*)location
             withAction:(nonnull NSString*)action
                andText:(nonnull NSString*)text
+           andProgress:(nullable PTCLProgressBlock)progressBlock
               andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
@@ -287,6 +308,7 @@
         [self.nextLocationWorker doUnflagObject:location
                                      withAction:action
                                         andText:text
+                                    andProgress:progressBlock
                                        andBlock:block];
         return;
     }
@@ -301,12 +323,14 @@
 
 - (void)doCheckFlagObject:(nonnull DAOLocation*)location
                withAction:(nonnull NSString*)action
+              andProgress:(nullable PTCLProgressBlock)progressBlock
                  andBlock:(nullable PTCLLocationBlockVoidNSUIntegerNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doCheckFlagObject:location
                                         withAction:action
+                                       andProgress:progressBlock
                                           andBlock:block];
         return;
     }
@@ -320,12 +344,14 @@
 }
 
 - (void)doFollowObject:(nonnull DAOLocation*)location
-             withBlock:(nullable PTCLLocationBlockVoidNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doFollowObject:location
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -338,12 +364,14 @@
 }
 
 - (void)doUnfollowObject:(nonnull DAOLocation*)location
-               withBlock:(nullable PTCLLocationBlockVoidNSError)block
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doUnfollowObject:location
-                                        withBlock:block];
+                                     withProgress:progressBlock
+                                         andBlock:block];
         return;
     }
     
@@ -357,12 +385,14 @@
 
 - (void)doTagObject:(nonnull DAOLocation*)location
             withTag:(nonnull NSString*)tag
+        andProgress:(nullable PTCLProgressBlock)progressBlock
            andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doTagObject:location
                                      withTag:tag
+                                 andProgress:progressBlock
                                     andBlock:block];
         return;
     }
@@ -377,12 +407,14 @@
 
 - (void)doUntagObject:(nonnull DAOLocation*)location
               withTag:(nonnull NSString*)tag
+          andProgress:(nullable PTCLProgressBlock)progressBlock
              andBlock:(nullable PTCLLocationBlockVoidNSError)block
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doUntagObject:location
                                        withTag:tag
+                                   andProgress:progressBlock
                                       andBlock:block];
         return;
     }
@@ -401,6 +433,7 @@
 
 - (void)doLoadFlagsForObject:(nonnull DAOLocation*)location
                  withActions:(nonnull NSArray<NSString*>*)actions
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLLocationBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLLocationBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -408,6 +441,7 @@
     {
         [self.nextLocationWorker doLoadFlagsForObject:location
                                           withActions:actions
+                                          andProgress:progressBlock
                                              andBlock:block
                                        andUpdateBlock:updateBlock];
         return;
@@ -423,6 +457,7 @@
 
 - (void)doLoadMyFlagsForObject:(nonnull DAOLocation*)location
                    withActions:(nonnull NSArray<NSString*>*)actions
+                   andProgress:(nullable PTCLProgressBlock)progressBlock
                       andBlock:(nullable PTCLLocationBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLLocationBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -430,6 +465,7 @@
     {
         [self.nextLocationWorker doLoadMyFlagsForObject:location
                                             withActions:actions
+                                            andProgress:progressBlock
                                                andBlock:block
                                          andUpdateBlock:updateBlock];
         return;
@@ -444,13 +480,15 @@
 }
 
 - (void)doLoadItemsForObject:(nonnull DAOLocation*)location
-                   withBlock:(nullable PTCLLocationBlockVoidNSArrayDAOItemNSUIntegerNSUIntegerNSErrorContinue)block
+                withProgress:(nullable PTCLProgressBlock)progressBlock
+                    andBlock:(nullable PTCLLocationBlockVoidNSArrayDAOItemNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLLocationBlockVoidNSArrayDAOItemNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doLoadItemsForObject:location
-                                            withBlock:block
+                                         withProgress:progressBlock
+                                             andBlock:block
                                        andUpdateBlock:updateBlock];
         return;
     }
@@ -464,13 +502,15 @@
 }
 
 - (void)doLoadPhotosForObject:(nonnull DAOLocation*)location
-                    withBlock:(nullable PTCLLocationBlockVoidNSArrayDAOPhotoNSUIntegerNSUIntegerNSErrorContinue)block
+                 withProgress:(nullable PTCLProgressBlock)progressBlock
+                     andBlock:(nullable PTCLLocationBlockVoidNSArrayDAOPhotoNSUIntegerNSUIntegerNSErrorContinue)block
                andUpdateBlock:(nullable PTCLLocationBlockVoidNSArrayDAOPhotoNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doLoadPhotosForObject:location
-                                             withBlock:block
+                                          withProgress:progressBlock
+                                              andBlock:block
                                         andUpdateBlock:updateBlock];
         return;
     }
@@ -484,13 +524,15 @@
 }
 
 - (void)doLoadTagsForObject:(nonnull DAOLocation*)location
-                  withBlock:(nullable PTCLLocationBlockVoidNSArrayNSStringNSUIntegerNSUIntegerNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLLocationBlockVoidNSArrayNSStringNSUIntegerNSUIntegerNSErrorContinue)block
              andUpdateBlock:(nullable PTCLLocationBlockVoidNSArrayNSStringNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextLocationWorker)
     {
         [self.nextLocationWorker doLoadTagsForObject:location
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -508,6 +550,7 @@
         withLongitude:(nullable NSNumber*)longitude
          withLatitude:(nullable NSNumber*)latitude
        withParameters:(nullable NSDictionary*)parameters
+          andProgress:(nullable PTCLProgressBlock)progressBlock
              andBlock:(nullable PTCLLocationSearchBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
        andUpdateBlock:(nullable PTCLLocationSearchBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -518,6 +561,7 @@
                                  withLongitude:longitude
                                   withLatitude:latitude
                                 withParameters:parameters
+                                   andProgress:progressBlock
                                       andBlock:block
                                 andUpdateBlock:updateBlock];
         return;
@@ -533,6 +577,7 @@
 
 - (void)doLoadObjectsWithTag:(nonnull NSString*)tag
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLLocationBlockVoidNSArrayDAOLocationNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLLocationBlockVoidNSArrayDAOLocationNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -540,6 +585,7 @@
     {
         [self.nextLocationWorker doLoadObjectsWithTag:tag
                                        withParameters:parameters
+                                          andProgress:progressBlock
                                              andBlock:block
                                        andUpdateBlock:updateBlock];
         return;

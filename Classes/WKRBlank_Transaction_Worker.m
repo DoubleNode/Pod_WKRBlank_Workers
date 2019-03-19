@@ -74,14 +74,16 @@
 
 - (void)doLoadObjectForOrderId:(nonnull NSString*)orderId
                          andId:(nonnull NSString*)transactionId
-                     withBlock:(nullable PTCLTransactionBlockVoidDAOTransactionNSErrorContinue)block
+                  withProgress:(nullable PTCLProgressBlock)progressBlock
+                      andBlock:(nullable PTCLTransactionBlockVoidDAOTransactionNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLTransactionBlockVoidDAOTransactionNSError)updateBlock
 {
     if (self.nextTransactionWorker)
     {
         [self.nextTransactionWorker doLoadObjectForOrderId:orderId
                                                      andId:transactionId
-                                                 withBlock:block
+                                              withProgress:progressBlock
+                                                  andBlock:block
                                             andUpdateBlock:updateBlock];
         return;
     }
@@ -95,12 +97,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOTransaction*)transaction
-             withBlock:(nullable PTCLTransactionBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLTransactionBlockVoidBOOLNSError)block
 {
     if (self.nextTransactionWorker)
     {
         [self.nextTransactionWorker doDeleteObject:transaction
-                                         withBlock:block];
+                                      withProgress:progressBlock
+                                          andBlock:block];
         return;
     }
     
@@ -113,12 +117,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOTransaction*)transaction
-           withBlock:(nullable PTCLTransactionBlockVoidDAOTransactionNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLTransactionBlockVoidDAOTransactionNSError)block
 {
     if (self.nextTransactionWorker)
     {
         [self.nextTransactionWorker doSaveObject:transaction
-                                       withBlock:block];
+                                    withProgress:progressBlock
+                                        andBlock:block];
         return;
     }
     

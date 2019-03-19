@@ -69,13 +69,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)checkinId
-                withBlock:(nullable PTCLCheckinBlockVoidDAOCheckinNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLCheckinBlockVoidDAOCheckinNSErrorContinue)block
            andUpdateBlock:(nullable PTCLCheckinBlockVoidDAOCheckinNSError)updateBlock
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doLoadObjectForId:checkinId
-                                        withBlock:block
+                                     withProgress:progressBlock
+                                         andBlock:block
                                    andUpdateBlock:updateBlock];
         return;
     }
@@ -89,12 +91,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOCheckin*)checkin
-             withBlock:(nullable PTCLCheckinBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLCheckinBlockVoidBOOLNSError)block
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doDeleteObject:checkin
-                                     withBlock:block];
+                                  withProgress:progressBlock
+                                      andBlock:block];
         return;
     }
     
@@ -107,12 +111,14 @@
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)checkinId
-                  withBlock:(nullable PTCLCheckinBlockVoidBOOLNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLCheckinBlockVoidBOOLNSError)block
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doDeleteObjectForId:checkinId
-                                          withBlock:block];
+                                       withProgress:progressBlock
+                                           andBlock:block];
         return;
     }
     
@@ -125,12 +131,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOCheckin*)checkin
-           withBlock:(nullable PTCLCheckinBlockVoidDAOCheckinNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLCheckinBlockVoidDAOCheckinNSError)block
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doSaveObject:checkin
-                                   withBlock:block];
+                                withProgress:progressBlock
+                                    andBlock:block];
         return;
     }
     
@@ -143,12 +151,14 @@
 }
 
 - (void)doFavoriteObject:(nonnull DAOCheckin*)checkin
-               withBlock:(nullable PTCLCheckinBlockVoidNSError)block
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLCheckinBlockVoidNSError)block
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doFavoriteObject:checkin
-                                       withBlock:block];
+                                    withProgress:progressBlock
+                                        andBlock:block];
         return;
     }
     
@@ -161,12 +171,14 @@
 }
 
 - (void)doUnfavoriteObject:(nonnull DAOCheckin*)checkin
-                 withBlock:(nullable PTCLCheckinBlockVoidNSError)block
+              withProgress:(nullable PTCLProgressBlock)progressBlock
+                  andBlock:(nullable PTCLCheckinBlockVoidNSError)block
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doUnfavoriteObject:checkin
-                                         withBlock:block];
+                                      withProgress:progressBlock
+                                          andBlock:block];
         return;
     }
     
@@ -181,13 +193,15 @@
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
 - (void)doLoadLocationForObject:(nonnull DAOCheckin*)checkin
-                      withBlock:(nullable PTCLCheckinBlockVoidDAOLocationNSErrorContinue)block
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLCheckinBlockVoidDAOLocationNSErrorContinue)block
                  andUpdateBlock:(nullable PTCLCheckinBlockVoidDAOLocationNSError)updateBlock
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doLoadLocationForObject:checkin
-                                              withBlock:block
+                                           withProgress:progressBlock
+                                               andBlock:block
                                          andUpdateBlock:updateBlock];
         return;
     }
@@ -201,13 +215,15 @@
 }
 
 - (void)doLoadPhotoForObject:(nonnull DAOCheckin*)checkin
-                   withBlock:(nullable PTCLCheckinBlockVoidDAOPhotoNSErrorContinue)block
+                withProgress:(nullable PTCLProgressBlock)progressBlock
+                    andBlock:(nullable PTCLCheckinBlockVoidDAOPhotoNSErrorContinue)block
               andUpdateBlock:(nullable PTCLCheckinBlockVoidDAOPhotoNSError)updateBlock
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doLoadPhotoForObject:checkin
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -221,13 +237,15 @@
 }
 
 - (void)doLoadUserForObject:(nonnull DAOCheckin*)checkin
-                  withBlock:(nullable PTCLCheckinBlockVoidDAOUserNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLCheckinBlockVoidDAOUserNSErrorContinue)block
              andUpdateBlock:(nullable PTCLCheckinBlockVoidDAOUserNSError)updateBlock
 {
     if (self.nextCheckinWorker)
     {
         [self.nextCheckinWorker doLoadUserForObject:checkin
-                                          withBlock:block
+                                       withProgress:progressBlock
+                                           andBlock:block
                                      andUpdateBlock:updateBlock];
         return;
     }

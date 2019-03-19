@@ -74,13 +74,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)ratingId
-                withBlock:(nullable PTCLRatingBlockVoidDAORatingNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLRatingBlockVoidDAORatingNSErrorContinue)block
            andUpdateBlock:(nullable PTCLRatingBlockVoidDAORatingNSError)updateBlock
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doLoadObjectForId:ratingId
-                                       withBlock:block
+                                    withProgress:progressBlock
+                                        andBlock:block
                                   andUpdateBlock:updateBlock];
         return;
     }
@@ -94,13 +96,15 @@
 }
 
 - (void)doLoadObjectForReview:(nonnull DAOReview*)review
-                    withBlock:(nullable PTCLRatingBlockVoidDAORatingNSErrorContinue)block
+                 withProgress:(nullable PTCLProgressBlock)progressBlock
+                     andBlock:(nullable PTCLRatingBlockVoidDAORatingNSErrorContinue)block
                andUpdateBlock:(nullable PTCLRatingBlockVoidDAORatingNSError)updateBlock
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doLoadObjectForReview:review
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -114,12 +118,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAORating*)rating
-             withBlock:(nullable PTCLRatingBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLRatingBlockVoidBOOLNSError)block
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doDeleteObject:rating
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -132,12 +138,14 @@
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)ratingId
-                  withBlock:(nullable PTCLRatingBlockVoidBOOLNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLRatingBlockVoidBOOLNSError)block
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doDeleteObjectForId:ratingId
-                                         withBlock:block];
+                                      withProgress:progressBlock
+                                          andBlock:block];
         return;
     }
     
@@ -150,12 +158,14 @@
 }
 
 - (void)doDeleteObjectForItem:(nonnull DAOItem*)item
-                    withBlock:(nullable PTCLRatingBlockVoidBOOLNSError)block
+                 withProgress:(nullable PTCLProgressBlock)progressBlock
+                     andBlock:(nullable PTCLRatingBlockVoidBOOLNSError)block
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doDeleteObjectForItem:item
-                                           withBlock:block];
+                                        withProgress:progressBlock
+                                            andBlock:block];
         return;
     }
     
@@ -168,12 +178,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAORating*)rating
-           withBlock:(nullable PTCLRatingBlockVoidDAORatingNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLRatingBlockVoidDAORatingNSError)block
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doSaveObject:rating
-                                  withBlock:block];
+                               withProgress:progressBlock
+                                   andBlock:block];
         return;
     }
     
@@ -188,13 +200,15 @@
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
 - (void)doLoadItemForObject:(nonnull DAORating*)rating
-                  withBlock:(nullable PTCLRatingBlockVoidDAOItemNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLRatingBlockVoidDAOItemNSErrorContinue)block
              andUpdateBlock:(nullable PTCLRatingBlockVoidDAOItemNSError)updateBlock
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doLoadItemForObject:rating
-                                         withBlock:block
+                                      withProgress:progressBlock
+                                          andBlock:block
                                     andUpdateBlock:updateBlock];
         return;
     }
@@ -208,13 +222,15 @@
 }
 
 - (void)doLoadLocationForObject:(nonnull DAORating*)rating
-                      withBlock:(nullable PTCLRatingBlockVoidDAOLocationNSErrorContinue)block
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLRatingBlockVoidDAOLocationNSErrorContinue)block
                  andUpdateBlock:(nullable PTCLRatingBlockVoidDAOLocationNSError)updateBlock
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doLoadLocationForObject:rating
-                                             withBlock:block
+                                          withProgress:progressBlock
+                                              andBlock:block
                                         andUpdateBlock:updateBlock];
         return;
     }
@@ -228,13 +244,15 @@
 }
 
 - (void)doLoadReviewForObject:(nonnull DAORating*)rating
-                    withBlock:(nullable PTCLRatingBlockVoidDAOReviewNSErrorContinue)block
+                 withProgress:(nullable PTCLProgressBlock)progressBlock
+                     andBlock:(nullable PTCLRatingBlockVoidDAOReviewNSErrorContinue)block
                andUpdateBlock:(nullable PTCLRatingBlockVoidDAOReviewNSError)updateBlock
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doLoadReviewForObject:rating
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -248,13 +266,15 @@
 }
 
 - (void)doLoadUserForObject:(nonnull DAORating*)rating
-                  withBlock:(nullable PTCLRatingBlockVoidDAOUserNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLRatingBlockVoidDAOUserNSErrorContinue)block
              andUpdateBlock:(nullable PTCLRatingBlockVoidDAOUserNSError)updateBlock
 {
     if (self.nextRatingWorker)
     {
         [self.nextRatingWorker doLoadUserForObject:rating
-                                         withBlock:block
+                                      withProgress:progressBlock
+                                          andBlock:block
                                     andUpdateBlock:updateBlock];
         return;
     }
@@ -271,6 +291,7 @@
 
 - (void)doLoadObjectsForItem:(nonnull DAOItem*)item
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -278,6 +299,7 @@
     {
         [self.nextRatingWorker doLoadObjectsForItem:item
                                      withParameters:parameters
+                                        andProgress:progressBlock
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
         return;
@@ -293,6 +315,7 @@
 
 - (void)doLoadObjectsForLocation:(nonnull DAOLocation*)location
                   withParameters:(nullable NSDictionary*)parameters
+                     andProgress:(nullable PTCLProgressBlock)progressBlock
                         andBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
                   andUpdateBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -300,6 +323,7 @@
     {
         [self.nextRatingWorker doLoadObjectsForLocation:location
                                          withParameters:parameters
+                                            andProgress:progressBlock
                                                andBlock:block
                                          andUpdateBlock:updateBlock];
         return;
@@ -315,6 +339,7 @@
 
 - (void)doLoadObjectsForReview:(nonnull DAOReview*)review
                 withParameters:(nullable NSDictionary*)parameters
+                   andProgress:(nullable PTCLProgressBlock)progressBlock
                       andBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -322,6 +347,7 @@
     {
         [self.nextRatingWorker doLoadObjectsForReview:review
                                        withParameters:parameters
+                                          andProgress:progressBlock
                                              andBlock:block
                                        andUpdateBlock:updateBlock];
         return;
@@ -337,6 +363,7 @@
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLRatingBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -344,6 +371,7 @@
     {
         [self.nextRatingWorker doLoadObjectsForUser:user
                                      withParameters:parameters
+                                        andProgress:progressBlock
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
         return;

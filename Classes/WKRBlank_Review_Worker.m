@@ -74,13 +74,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)reviewId
-                withBlock:(nullable PTCLReviewBlockVoidDAOReviewNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLReviewBlockVoidDAOReviewNSErrorContinue)block
            andUpdateBlock:(nullable PTCLReviewBlockVoidDAOReviewNSError)updateBlock
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doLoadObjectForId:reviewId
-                                       withBlock:block
+                                    withProgress:progressBlock
+                                        andBlock:block
                                   andUpdateBlock:updateBlock];
         return;
     }
@@ -94,12 +96,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOReview*)review
-             withBlock:(nullable PTCLReviewBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLReviewBlockVoidBOOLNSError)block
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doDeleteObject:review
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -112,12 +116,14 @@
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)reviewId
-                  withBlock:(nullable PTCLReviewBlockVoidBOOLNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLReviewBlockVoidBOOLNSError)block
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doDeleteObjectForId:reviewId
-                                         withBlock:block];
+                                      withProgress:progressBlock
+                                          andBlock:block];
         return;
     }
     
@@ -130,12 +136,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOReview*)review
-           withBlock:(nullable PTCLReviewBlockVoidDAOReviewNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLReviewBlockVoidDAOReviewNSError)block
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doSaveObject:review
-                                  withBlock:block];
+                               withProgress:progressBlock
+                                   andBlock:block];
         return;
     }
     
@@ -150,13 +158,15 @@
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
 - (void)doLoadCreatorForObject:(nonnull DAOReview*)review
-                     withBlock:(nullable PTCLReviewBlockVoidDAOUserNSErrorContinue)block
+                  withProgress:(nullable PTCLProgressBlock)progressBlock
+                      andBlock:(nullable PTCLReviewBlockVoidDAOUserNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLReviewBlockVoidDAOUserNSError)updateBlock
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doLoadCreatorForObject:review
-                                            withBlock:block
+                                         withProgress:progressBlock
+                                             andBlock:block
                                        andUpdateBlock:updateBlock];
         return;
     }
@@ -170,13 +180,15 @@
 }
 
 - (void)doLoadItemForObject:(nonnull DAOReview*)review
-                  withBlock:(nullable PTCLReviewBlockVoidDAOItemNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLReviewBlockVoidDAOItemNSErrorContinue)block
              andUpdateBlock:(nullable PTCLReviewBlockVoidDAOItemNSError)updateBlock
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doLoadItemForObject:review
-                                         withBlock:block
+                                      withProgress:progressBlock
+                                          andBlock:block
                                     andUpdateBlock:updateBlock];
         return;
     }
@@ -190,13 +202,15 @@
 }
 
 - (void)doLoadLocationForObject:(nonnull DAOReview*)review
-                      withBlock:(nullable PTCLReviewBlockVoidDAOLocationNSErrorContinue)block
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLReviewBlockVoidDAOLocationNSErrorContinue)block
                  andUpdateBlock:(nullable PTCLReviewBlockVoidDAOLocationNSError)updateBlock
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doLoadLocationForObject:review
-                                             withBlock:block
+                                          withProgress:progressBlock
+                                              andBlock:block
                                         andUpdateBlock:updateBlock];
         return;
     }
@@ -210,13 +224,15 @@
 }
 
 - (void)doLoadPhotoForObject:(nonnull DAOReview*)review
-                   withBlock:(nullable PTCLReviewBlockVoidDAOPhotoNSErrorContinue)block
+                withProgress:(nullable PTCLProgressBlock)progressBlock
+                    andBlock:(nullable PTCLReviewBlockVoidDAOPhotoNSErrorContinue)block
               andUpdateBlock:(nullable PTCLReviewBlockVoidDAOPhotoNSError)updateBlock
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doLoadPhotoForObject:review
-                                          withBlock:block
+                                       withProgress:progressBlock
+                                           andBlock:block
                                      andUpdateBlock:updateBlock];
         return;
     }
@@ -230,13 +246,15 @@
 }
 
 - (void)doLoadUserForObject:(nonnull DAOReview*)review
-                  withBlock:(nullable PTCLReviewBlockVoidDAOUserNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLReviewBlockVoidDAOUserNSErrorContinue)block
              andUpdateBlock:(nullable PTCLReviewBlockVoidDAOUserNSError)updateBlock
 {
     if (self.nextReviewWorker)
     {
         [self.nextReviewWorker doLoadUserForObject:review
-                                         withBlock:block
+                                      withProgress:progressBlock
+                                          andBlock:block
                                     andUpdateBlock:updateBlock];
         return;
     }
@@ -253,6 +271,7 @@
 
 - (void)doLoadObjectsForItem:(nonnull DAOItem*)item
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -260,6 +279,7 @@
     {
         [self.nextReviewWorker doLoadObjectsForItem:item
                                      withParameters:parameters
+                                        andProgress:progressBlock
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
         return;
@@ -275,6 +295,7 @@
 
 - (void)doLoadObjectsForLocation:(nonnull DAOLocation*)location
                   withParameters:(nullable NSDictionary*)parameters
+                     andProgress:(nullable PTCLProgressBlock)progressBlock
                         andBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
                   andUpdateBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -282,6 +303,7 @@
     {
         [self.nextReviewWorker doLoadObjectsForLocation:location
                                          withParameters:parameters
+                                            andProgress:progressBlock
                                                andBlock:block
                                          andUpdateBlock:updateBlock];
         return;
@@ -297,6 +319,7 @@
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLReviewBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -304,6 +327,7 @@
     {
         [self.nextReviewWorker doLoadObjectsForUser:user
                                      withParameters:parameters
+                                        andProgress:progressBlock
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
         return;

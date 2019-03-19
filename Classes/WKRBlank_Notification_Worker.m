@@ -73,13 +73,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)notificationId
-                withBlock:(nullable PTCLNotificationBlockVoidDAONotificationNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLNotificationBlockVoidDAONotificationNSErrorContinue)block
            andUpdateBlock:(nullable PTCLNotificationBlockVoidDAONotificationNSError)updateBlock
 {
     if (self.nextNotificationWorker)
     {
         [self.nextNotificationWorker doLoadObjectForId:notificationId
-                                             withBlock:block
+                                          withProgress:progressBlock
+                                              andBlock:block
                                         andUpdateBlock:updateBlock];
         return;
     }
@@ -93,12 +95,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAONotification*)notification
-             withBlock:(nullable PTCLNotificationBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLNotificationBlockVoidBOOLNSError)block
 {
     if (self.nextNotificationWorker)
     {
         [self.nextNotificationWorker doDeleteObject:notification
-                                          withBlock:block];
+                                       withProgress:progressBlock
+                                           andBlock:block];
         return;
     }
     
@@ -111,12 +115,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAONotification*)notification
-           withBlock:(nullable PTCLNotificationBlockVoidDAONotificationNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLNotificationBlockVoidDAONotificationNSError)block
 {
     if (self.nextNotificationWorker)
     {
         [self.nextNotificationWorker doSaveObject:notification
-                                        withBlock:block];
+                                     withProgress:progressBlock
+                                         andBlock:block];
         return;
     }
     
@@ -131,13 +137,15 @@
 #pragma mark - Business Logic / Collection Items CRUD
 
 - (void)doLoadTransmissionsForObject:(nonnull DAONotification*)notification
-                           withBlock:(nullable PTCLNotificationBlockVoidNSArrayDAOTransmissionNSUIntegerNSUIntegerNSErrorContinue)block
+                        withProgress:(nullable PTCLProgressBlock)progressBlock
+                            andBlock:(nullable PTCLNotificationBlockVoidNSArrayDAOTransmissionNSUIntegerNSUIntegerNSErrorContinue)block
                       andUpdateBlock:(nullable PTCLNotificationBlockVoidNSArrayDAOTransmissionNSUIntegerNSUIntegerNSError)updateBlock
 {
     if (self.nextNotificationWorker)
     {
         [self.nextNotificationWorker doLoadTransmissionsForObject:notification
-                                                        withBlock:block
+                                                     withProgress:progressBlock
+                                                         andBlock:block
                                                    andUpdateBlock:updateBlock];
         return;
     }
@@ -152,6 +160,7 @@
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLNotificationBlockVoidNSArrayDAONotificationNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLNotificationBlockVoidNSArrayDAONotificationNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -159,6 +168,7 @@
     {
         [self.nextNotificationWorker doLoadObjectsForUser:user
                                            withParameters:parameters
+                                              andProgress:progressBlock
                                                  andBlock:block
                                            andUpdateBlock:updateBlock];
         return;

@@ -73,13 +73,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)paymentAccountId
-                withBlock:(nullable PTCLPaymentAccountBlockVoidDAOPaymentAccountNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLPaymentAccountBlockVoidDAOPaymentAccountNSErrorContinue)block
            andUpdateBlock:(nullable PTCLPaymentAccountBlockVoidDAOPaymentAccountNSError)updateBlock
 {
     if (self.nextPaymentAccountWorker)
     {
         [self.nextPaymentAccountWorker doLoadObjectForId:paymentAccountId
-                                               withBlock:block
+                                            withProgress:progressBlock
+                                                andBlock:block
                                           andUpdateBlock:updateBlock];
         return;
     }
@@ -93,12 +95,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOPaymentAccount*)paymentAccount
-             withBlock:(nullable PTCLPaymentAccountBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLPaymentAccountBlockVoidBOOLNSError)block
 {
     if (self.nextPaymentAccountWorker)
     {
         [self.nextPaymentAccountWorker doDeleteObject:paymentAccount
-                                            withBlock:block];
+                                         withProgress:progressBlock
+                                             andBlock:block];
         return;
     }
     
@@ -111,12 +115,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOPaymentAccount*)paymentAccount
-           withBlock:(nullable PTCLPaymentAccountBlockVoidDAOPaymentAccountNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLPaymentAccountBlockVoidDAOPaymentAccountNSError)block
 {
     if (self.nextPaymentAccountWorker)
     {
         [self.nextPaymentAccountWorker doSaveObject:paymentAccount
-                                          withBlock:block];
+                                       withProgress:progressBlock
+                                           andBlock:block];
         return;
     }
     
@@ -131,6 +137,7 @@
 - (void)doVerifyObject:(nonnull DAOPaymentAccount*)paymentAccount
           withDeposit1:(NSUInteger)deposit1
            andDeposit2:(NSUInteger)deposit2
+           andProgress:(nullable PTCLProgressBlock)progressBlock
               andBlock:(nullable PTCLPaymentAccountBlockVoidBOOLNSError)block
 {
     if (self.nextPaymentAccountWorker)
@@ -138,6 +145,7 @@
         [self.nextPaymentAccountWorker doVerifyObject:paymentAccount
                                          withDeposit1:deposit1
                                           andDeposit2:deposit2
+                                          andProgress:progressBlock
                                              andBlock:block];
         return;
     }
@@ -153,13 +161,15 @@
 #pragma mark - Business Logic / Collection Items CRUD
 
 - (void)doLoadContactForObject:(nonnull DAOPaymentAccount*)paymentAccount
-                     withBlock:(nullable PTCLPaymentAccountBlockVoidDAOContactNSErrorContinue)block
+                  withProgress:(nullable PTCLProgressBlock)progressBlock
+                      andBlock:(nullable PTCLPaymentAccountBlockVoidDAOContactNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLPaymentAccountBlockVoidDAOContactNSError)updateBlock
 {
     if (self.nextPaymentAccountWorker)
     {
         [self.nextPaymentAccountWorker doLoadContactForObject:paymentAccount
-                                                    withBlock:block
+                                                 withProgress:progressBlock
+                                                     andBlock:block
                                                andUpdateBlock:updateBlock];
         return;
     }
@@ -174,6 +184,7 @@
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLPaymentAccountBlockVoidNSArrayDAOPaymentAccountNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLPaymentAccountBlockVoidNSArrayDAOPaymentAccountNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -181,6 +192,7 @@
     {
         [self.nextPaymentAccountWorker doLoadObjectsForUser:user
                                              withParameters:parameters
+                                                andProgress:progressBlock
                                                    andBlock:block
                                              andUpdateBlock:updateBlock];
         return;

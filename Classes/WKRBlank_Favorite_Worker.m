@@ -69,13 +69,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)favoriteId
-                withBlock:(nullable PTCLFavoriteBlockVoidDAOFavoriteNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLFavoriteBlockVoidDAOFavoriteNSErrorContinue)block
            andUpdateBlock:(nullable PTCLFavoriteBlockVoidDAOFavoriteNSError)updateBlock
 {
     if (self.nextFavoriteWorker)
     {
         [self.nextFavoriteWorker doLoadObjectForId:favoriteId
-                                         withBlock:block
+                                      withProgress:progressBlock
+                                          andBlock:block
                                     andUpdateBlock:updateBlock];
         return;
     }
@@ -89,12 +91,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOFavorite*)favorite
-             withBlock:(nullable PTCLFavoriteBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLFavoriteBlockVoidBOOLNSError)block
 {
     if (self.nextFavoriteWorker)
     {
         [self.nextFavoriteWorker doDeleteObject:favorite
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -107,12 +111,14 @@
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)favoriteId
-                  withBlock:(nullable PTCLFavoriteBlockVoidBOOLNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLFavoriteBlockVoidBOOLNSError)block
 {
     if (self.nextFavoriteWorker)
     {
         [self.nextFavoriteWorker doDeleteObjectForId:favoriteId
-                                           withBlock:block];
+                                        withProgress:progressBlock
+                                            andBlock:block];
         return;
     }
     
@@ -125,12 +131,14 @@
 }
 
 - (void)doDeleteObjectForItem:(nonnull DAOItem*)item
-                    withBlock:(nullable PTCLFavoriteBlockVoidBOOLNSError)block
+                 withProgress:(nullable PTCLProgressBlock)progressBlock
+                     andBlock:(nullable PTCLFavoriteBlockVoidBOOLNSError)block
 {
     if (self.nextFavoriteWorker)
     {
         [self.nextFavoriteWorker doDeleteObjectForItem:item
-                                             withBlock:block];
+                                          withProgress:progressBlock
+                                              andBlock:block];
         return;
     }
     
@@ -145,13 +153,15 @@
 #pragma mark - Business Logic / Single Item Relationship CRUD
 
 - (void)doLoadItemForObject:(nonnull DAOFavorite*)favorite
-                  withBlock:(nullable PTCLFavoriteBlockVoidDAOItemNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLFavoriteBlockVoidDAOItemNSErrorContinue)block
              andUpdateBlock:(nullable PTCLFavoriteBlockVoidDAOItemNSError)updateBlock
 {
     if (self.nextFavoriteWorker)
     {
         [self.nextFavoriteWorker doLoadItemForObject:favorite
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -165,13 +175,15 @@
 }
 
 - (void)doLoadUserForObject:(nonnull DAOFavorite*)favorite
-                  withBlock:(nullable PTCLFavoriteBlockVoidDAOUserNSErrorContinue)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLFavoriteBlockVoidDAOUserNSErrorContinue)block
              andUpdateBlock:(nullable PTCLFavoriteBlockVoidDAOUserNSError)updateBlock
 {
     if (self.nextFavoriteWorker)
     {
         [self.nextFavoriteWorker doLoadUserForObject:favorite
-                                           withBlock:block
+                                        withProgress:progressBlock
+                                            andBlock:block
                                       andUpdateBlock:updateBlock];
         return;
     }
@@ -188,6 +200,7 @@
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
               withParameters:(nullable NSDictionary*)parameters
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLFavoriteBlockVoidNSArrayNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLFavoriteBlockVoidNSArrayNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -195,6 +208,7 @@
     {
         [self.nextFavoriteWorker doLoadObjectsForUser:user
                                        withParameters:parameters
+                                          andProgress:progressBlock
                                              andBlock:block
                                        andUpdateBlock:updateBlock];
         return;

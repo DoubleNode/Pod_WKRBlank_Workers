@@ -74,14 +74,16 @@
 
 - (void)doLoadObjectForOrderId:(nonnull NSString*)orderId
                          andId:(nonnull NSString*)lineitemId
-                     withBlock:(nullable PTCLLineitemBlockVoidDAOLineitemNSErrorContinue)block
+                  withProgress:(nullable PTCLProgressBlock)progressBlock
+                      andBlock:(nullable PTCLLineitemBlockVoidDAOLineitemNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLLineitemBlockVoidDAOLineitemNSError)updateBlock
 {
     if (self.nextLineitemWorker)
     {
         [self.nextLineitemWorker doLoadObjectForOrderId:orderId
                                                   andId:lineitemId
-                                              withBlock:block
+                                           withProgress:progressBlock
+                                               andBlock:block
                                          andUpdateBlock:updateBlock];
         return;
     }
@@ -95,12 +97,14 @@
 }
 
 - (void)doDeleteObject:(nonnull DAOLineitem*)lineitem
-             withBlock:(nullable PTCLLineitemBlockVoidBOOLNSError)block
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLLineitemBlockVoidBOOLNSError)block
 {
     if (self.nextLineitemWorker)
     {
         [self.nextLineitemWorker doDeleteObject:lineitem
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -113,12 +117,14 @@
 }
 
 - (void)doSaveObject:(nonnull DAOLineitem*)lineitem
-           withBlock:(nullable PTCLLineitemBlockVoidDAOLineitemNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLLineitemBlockVoidDAOLineitemNSError)block
 {
     if (self.nextLineitemWorker)
     {
         [self.nextLineitemWorker doSaveObject:lineitem
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     

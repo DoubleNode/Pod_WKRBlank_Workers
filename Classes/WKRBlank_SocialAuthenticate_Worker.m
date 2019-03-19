@@ -72,11 +72,13 @@
 
 #pragma mark - Business Logic
 
-- (void)doAuthenticateWithCompletion:(PTCLSocialAuthenticateBlockVoidSessionNSError _Nullable)block
+- (void)doAuthenticateWithProgress:(nullable PTCLProgressBlock)progressBlock
+                          andBlock:(PTCLSocialAuthenticateBlockVoidSessionNSError _Nullable)block
 {
     if (self.nextSocialAuthenticateWorker)
     {
-        [self.nextSocialAuthenticateWorker doAuthenticateWithCompletion:block];
+        [self.nextSocialAuthenticateWorker doAuthenticateWithProgress:progressBlock
+                                                             andBlock:block];
         return;
     }
     
@@ -90,13 +92,15 @@
 
 - (void)doRetrieveUser:(nullable NSString*)userId
            withSession:(nullable PTCLSocialAuthenticate_Session*)session
-        withCompletion:(nullable PTCLSocialAuthenticateBlockVoidUserNSError)block
+          andProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLSocialAuthenticateBlockVoidUserNSError)block
 {
     if (self.nextSocialAuthenticateWorker)
     {
         [self.nextSocialAuthenticateWorker doRetrieveUser:userId
                                               withSession:session
-                                           withCompletion:block];
+                                              andProgress:progressBlock
+                                                 andBlock:block];
         return;
     }
     

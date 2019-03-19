@@ -74,13 +74,15 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)newsId
-                withBlock:(nullable PTCLNewsBlockVoidDAONewsNSErrorContinue)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLNewsBlockVoidDAONewsNSErrorContinue)block
            andUpdateBlock:(nullable PTCLNewsBlockVoidDAONewsNSError)updateBlock
 {
     if (self.nextNewsWorker)
     {
         [self.nextNewsWorker doLoadObjectForId:newsId
-                                     withBlock:block
+                                  withProgress:progressBlock
+                                         andBlock:block
                                 andUpdateBlock:updateBlock];
         return;
     }
@@ -94,12 +96,14 @@
 }
 
 - (void)doFavoriteObject:(nonnull DAONews*)news
-               withBlock:(nullable PTCLNewsBlockVoidNSError)block
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLNewsBlockVoidNSError)block
 {
     if (self.nextNewsWorker)
     {
         [self.nextNewsWorker doFavoriteObject:news
-                                    withBlock:block];
+                                 withProgress:progressBlock
+                                     andBlock:block];
         return;
     }
     
@@ -112,12 +116,14 @@
 }
 
 - (void)doUnfavoriteObject:(nonnull DAONews*)news
-                 withBlock:(nullable PTCLNewsBlockVoidNSError)block
+              withProgress:(nullable PTCLProgressBlock)progressBlock
+                  andBlock:(nullable PTCLNewsBlockVoidNSError)block
 {
     if (self.nextNewsWorker)
     {
         [self.nextNewsWorker doUnfavoriteObject:news
-                                      withBlock:block];
+                                   withProgress:progressBlock
+                                       andBlock:block];
         return;
     }
     
@@ -132,6 +138,7 @@
 - (void)doFlagObject:(nonnull DAONews*)news
           withAction:(nonnull NSString*)action
              andText:(nonnull NSString*)text
+         andProgress:(nullable PTCLProgressBlock)progressBlock
             andBlock:(nullable PTCLNewsBlockVoidNSError)block
 {
     if (self.nextNewsWorker)
@@ -139,6 +146,7 @@
         [self.nextNewsWorker doFlagObject:news
                                withAction:action
                                   andText:text
+                              andProgress:progressBlock
                                  andBlock:block];
         return;
     }
@@ -154,6 +162,7 @@
 - (void)doUnflagObject:(nonnull DAONews*)news
             withAction:(nonnull NSString*)action
                andText:(nonnull NSString*)text
+           andProgress:(nullable PTCLProgressBlock)progressBlock
               andBlock:(nullable PTCLNewsBlockVoidNSError)block
 {
     if (self.nextNewsWorker)
@@ -161,6 +170,7 @@
         [self.nextNewsWorker doUnflagObject:news
                                  withAction:action
                                     andText:text
+                                andProgress:progressBlock
                                    andBlock:block];
         return;
     }
@@ -175,12 +185,14 @@
 
 - (void)doCheckFlagObject:(nonnull DAONews*)news
                withAction:(nonnull NSString*)action
+              andProgress:(nullable PTCLProgressBlock)progressBlock
                  andBlock:(nullable PTCLNewsBlockVoidNSUIntegerNSError)block
 {
     if (self.nextNewsWorker)
     {
         [self.nextNewsWorker doCheckFlagObject:news
                                     withAction:action
+                                   andProgress:progressBlock
                                       andBlock:block];
         return;
     }
@@ -197,6 +209,7 @@
 
 - (void)doLoadFlagsForObject:(nonnull DAONews*)news
                  withActions:(nonnull NSArray<NSString*>*)actions
+                 andProgress:(nullable PTCLProgressBlock)progressBlock
                     andBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
               andUpdateBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -204,6 +217,7 @@
     {
         [self.nextNewsWorker doLoadFlagsForObject:news
                                       withActions:actions
+                                      andProgress:progressBlock
                                          andBlock:block
                                    andUpdateBlock:updateBlock];
         return;
@@ -219,6 +233,7 @@
 
 - (void)doLoadMyFlagsForObject:(nonnull DAONews*)news
                    withActions:(nonnull NSArray<NSString*>*)actions
+                   andProgress:(nullable PTCLProgressBlock)progressBlock
                       andBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSErrorContinue)block
                 andUpdateBlock:(nullable PTCLNewsBlockVoidNSArrayDAOFlagNSUIntegerNSUIntegerNSError)updateBlock
 {
@@ -226,6 +241,7 @@
     {
         [self.nextNewsWorker doLoadMyFlagsForObject:news
                                         withActions:actions
+                                        andProgress:progressBlock
                                            andBlock:block
                                      andUpdateBlock:updateBlock];
         return;

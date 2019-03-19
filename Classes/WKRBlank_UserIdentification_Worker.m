@@ -72,15 +72,15 @@
 
 #pragma mark - Business Logic
 
-- (void)doUserIdentifier:(NSString*_Nonnull)identifier
-            withUsername:(NSString* _Nonnull)username
-                andEmail:(NSString* _Nonnull)email
+- (void)doIdentifyUserWithIdentifier:(nonnull NSString*)identifier
+                         andUsername:(nonnull NSString*)username
+                            andEmail:(nonnull NSString*)email
 {
     if (self.nextUserIdentificationWorker)
     {
-        [self.nextUserIdentificationWorker doUserIdentifier:identifier
-                                               withUsername:username
-                                                   andEmail:email];
+        [self.nextUserIdentificationWorker doIdentifyUserWithIdentifier:identifier
+                                                            andUsername:username
+                                                               andEmail:email];
         return;
     }
 }
