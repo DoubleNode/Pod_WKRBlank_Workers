@@ -126,13 +126,17 @@
     block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
-- (void)doLogOut
+- (void)doLogoutWithProgress:(nullable PTCLProgressBlock)progressBlock
+                    andBlock:(nullable PTCLUserBlockVoidBOOLNSError)block;
 {
     if (self.nextUserWorker)
     {
-        [self.nextUserWorker doLogOut];
+        [self.nextUserWorker doLogoutWithProgress:progressBlock
+                                         andBlock:block];
         return;
     }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
 - (void)doValidateCurrentSessionWithProgress:(nullable PTCLProgressBlock)progressBlock
