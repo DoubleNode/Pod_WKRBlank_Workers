@@ -90,12 +90,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(nil, nil, NO, error) : (void)nil;
+    block ? block(nil, nil, NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
 @end

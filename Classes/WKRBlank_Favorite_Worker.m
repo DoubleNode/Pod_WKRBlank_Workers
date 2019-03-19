@@ -82,12 +82,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(nil, error, nil) : (void)nil;
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS), nil) : (void)nil;
 }
 
 - (void)doDeleteObject:(nonnull DAOFavorite*)favorite
@@ -102,12 +97,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(NO, error) : (void)nil;
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)favoriteId
@@ -122,12 +112,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(NO, error) : (void)nil;
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
 - (void)doDeleteObjectForItem:(nonnull DAOItem*)item
@@ -142,12 +127,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(NO, error) : (void)nil;
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
 #pragma mark - Business Logic / Single Item Relationship CRUD
@@ -166,12 +146,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(nil, error, nil) : (void)nil;
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS), nil) : (void)nil;
 }
 
 - (void)doLoadUserForObject:(nonnull DAOFavorite*)favorite
@@ -188,12 +163,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(nil, error, nil) : (void)nil;
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS), nil) : (void)nil;
 }
 
 #pragma mark - Business Logic / Collection Items CRUD
@@ -214,12 +184,7 @@
         return;
     }
     
-    NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                           code:ERROR_NOT_IMPLEMENTED
-                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The worker is not implemented.", nil),
-                                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Blank worker should not be actually used for real functionality.", nil)
-                                                   }];
-    block ? block(@[ ], 0, 0, error, nil) : (void)nil;
+    block ? block(@[ ], 0, 0, BLANKWORKERERROR(ERROR_DOMAIN_CLASS), nil) : (void)nil;
 }
 
 @end

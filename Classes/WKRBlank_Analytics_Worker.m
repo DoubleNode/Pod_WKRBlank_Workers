@@ -83,20 +83,26 @@
     }
 }
 
-- (void)doIdentify:(NSString* _Nonnull)userId traits:(NSDictionary* _Nonnull)traits
+- (void)doIdentify:(NSString* _Nonnull)userId
+            traits:(NSDictionary* _Nonnull)traits
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doIdentify:userId traits:traits];
+        [self.nextAnalyticsWorker doIdentify:userId
+                                      traits:traits];
         return;
     }
 }
 
-- (void)doIdentify:(NSString* _Nonnull)userId traits:(NSDictionary* _Nonnull)traits options:(NSDictionary* _Nonnull)options
+- (void)doIdentify:(NSString* _Nonnull)userId
+            traits:(NSDictionary* _Nonnull)traits
+           options:(NSDictionary* _Nonnull)options
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doIdentify:userId traits:traits options:options];
+        [self.nextAnalyticsWorker doIdentify:userId
+                                      traits:traits
+                                     options:options];
         return;
     }
 }
@@ -112,20 +118,26 @@
     }
 }
 
-- (void)doTrack:(NSString* _Nonnull)event properties:(NSDictionary* _Nonnull)properties
+- (void)doTrack:(NSString* _Nonnull)event
+     properties:(NSDictionary* _Nonnull)properties
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doTrack:event properties:properties];
+        [self.nextAnalyticsWorker doTrack:event
+                               properties:properties];
         return;
     }
 }
 
-- (void)doTrack:(NSString* _Nonnull)event properties:(NSDictionary* _Nonnull)properties options:(NSDictionary* _Nonnull)options
+- (void)doTrack:(NSString* _Nonnull)event
+     properties:(NSDictionary* _Nonnull)properties
+        options:(NSDictionary* _Nonnull)options
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doTrack:event properties:properties options:options];
+        [self.nextAnalyticsWorker doTrack:event
+                               properties:properties
+                                  options:options];
         return;
     }
 }
@@ -141,20 +153,26 @@
     }
 }
 
-- (void)doScreen:(NSString* _Nonnull)screenTitle properties:(NSDictionary* _Nonnull)properties
+- (void)doScreen:(NSString* _Nonnull)screenTitle
+      properties:(NSDictionary* _Nonnull)properties
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doScreen:screenTitle properties:properties];
+        [self.nextAnalyticsWorker doScreen:screenTitle
+                                properties:properties];
         return;
     }
 }
 
-- (void)doScreen:(NSString* _Nonnull)screenTitle properties:(NSDictionary* _Nonnull)properties options:(NSDictionary* _Nonnull)options
+- (void)doScreen:(NSString* _Nonnull)screenTitle
+      properties:(NSDictionary* _Nonnull)properties
+         options:(NSDictionary* _Nonnull)options
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doScreen:screenTitle properties:properties options:options];
+        [self.nextAnalyticsWorker doScreen:screenTitle
+                                properties:properties
+                                   options:options];
         return;
     }
 }
@@ -170,20 +188,26 @@
     }
 }
 
-- (void)doGroup:(NSString* _Nonnull)groupId traits:(NSDictionary* _Nonnull)traits
+- (void)doGroup:(NSString* _Nonnull)groupId
+         traits:(NSDictionary* _Nonnull)traits
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doGroup:groupId traits:traits];
+        [self.nextAnalyticsWorker doGroup:groupId
+                                   traits:traits];
         return;
     }
 }
 
-- (void)doGroup:(NSString* _Nonnull)groupId traits:(NSDictionary* _Nonnull)traits options:(NSDictionary* _Nonnull)options
+- (void)doGroup:(NSString* _Nonnull)groupId
+         traits:(NSDictionary* _Nonnull)traits
+        options:(NSDictionary* _Nonnull)options
 {
     if (self.nextAnalyticsWorker)
     {
-        [self.nextAnalyticsWorker doGroup:groupId traits:traits options:options];
+        [self.nextAnalyticsWorker doGroup:groupId
+                                   traits:traits
+                                  options:options];
         return;
     }
 }

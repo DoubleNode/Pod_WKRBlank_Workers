@@ -6,8 +6,8 @@
 //  Copyright © 2016 Darren Ehlers and DoubleNode, LLC. All rights reserved.
 //
 
-@import DNCProtocols;
+#import "__WKR_Blank_Worker.h"
 
-@interface WKRBlank_Review_Worker : WKRNET_Base_Worker<PTCLReview_Protocol>
+@interface WKRBlank_Review_Worker : WKR_Blank_Worker<PTCLReview_Protocol>
 
 @end

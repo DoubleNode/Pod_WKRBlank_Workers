@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20C3D3DAE44BC5C52B2C5DD3 /* Pods_WKRBlank_WorkersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F72923E5801FC19CC183F7 /* Pods_WKRBlank_WorkersTests.framework */; };
+		6A33BAAC22408AF200BAB399 /* __WKR_Blank_Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A33BAAB22408AF200BAB399 /* __WKR_Blank_Worker.m */; };
 		6ADDB7CD1E56442A001DB127 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADDB7CC1E56442A001DB127 /* main.m */; };
 		6ADDB7D01E56442A001DB127 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADDB7CF1E56442A001DB127 /* AppDelegate.m */; };
 		6ADDB7D31E56442A001DB127 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ADDB7D21E56442A001DB127 /* ViewController.m */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A33BAAA22408AF200BAB399 /* __WKR_Blank_Worker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = __WKR_Blank_Worker.h; path = Classes/__WKR_Blank_Worker.h; sourceTree = "<group>"; };
+		6A33BAAB22408AF200BAB399 /* __WKR_Blank_Worker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = __WKR_Blank_Worker.m; path = Classes/__WKR_Blank_Worker.m; sourceTree = "<group>"; };
 		6ADDB7C81E56442A001DB127 /* WKRBlank_Workers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKRBlank_Workers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADDB7CC1E56442A001DB127 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6ADDB7CE1E56442A001DB127 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 		6ADDB7FF1E56445F001DB127 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6A33BAAA22408AF200BAB399 /* __WKR_Blank_Worker.h */,
+				6A33BAAB22408AF200BAB399 /* __WKR_Blank_Worker.m */,
 				6ADDB8031E56449A001DB127 /* WKRBlank_Activity_Worker.h */,
 				6ADDB8041E56449A001DB127 /* WKRBlank_Activity_Worker.m */,
 				6ADDB8051E56449A001DB127 /* WKRBlank_Analytics_Worker.h */,
@@ -601,6 +606,7 @@
 				6AFC3C632126009300D7A780 /* WKRBlank_PaymentAccount_Worker.m in Sources */,
 				6AFC3C5F2126006E00D7A780 /* WKRBlank_Notification_Worker.m in Sources */,
 				6ADDB8341E56449A001DB127 /* WKRBlank_Favorite_Worker.m in Sources */,
+				6A33BAAC22408AF200BAB399 /* __WKR_Blank_Worker.m in Sources */,
 				6ADDB83C1E56449A001DB127 /* WKRBlank_Photo_Worker.m in Sources */,
 				6ADDB8331E56449A001DB127 /* WKRBlank_Checkin_Worker.m in Sources */,
 				6ADDB8391E56449A001DB127 /* WKRBlank_Message_Worker.m in Sources */,
