@@ -119,6 +119,42 @@
     block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
 }
 
+- (void)doSendVerificationType:(nonnull NSString*)type
+                     forObject:(nonnull DAOContact*)contact
+                  withProgress:(nullable PTCLProgressBlock)progressBlock
+                      andBlock:(nullable PTCLContactBlockVoidNSDictionaryNSError)block
+{
+    if (self.nextContactWorker)
+    {
+        [self.nextContactWorker doSendVerificationType:type
+                                             forObject:contact
+                                          withProgress:progressBlock
+                                              andBlock:block];
+        return;
+    }
+    
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doVerifyType:(nonnull NSString*)type
+           forObject:(nonnull DAOContact*)contact
+      withParameters:(nullable NSDictionary*)parameters
+         andProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLContactBlockVoidNSDictionaryNSError)block
+{
+    if (self.nextContactWorker)
+    {
+        [self.nextContactWorker doVerifyType:type
+                                   forObject:contact
+                              withParameters:parameters
+                                 andProgress:progressBlock
+                                    andBlock:block];
+        return;
+    }
+    
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
 #pragma mark - Business Logic / Collection Items CRUD
 
 - (void)doLoadObjectsForUser:(nonnull DAOUser*)user
