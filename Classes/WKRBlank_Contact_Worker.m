@@ -70,6 +70,72 @@
     [super disableOption:option];
 }
 
+#pragma mark - Business Logic / Single Item Security CRUD
+
+- (void)doLoadSecurityForObject:(nonnull DAOContact*)contact
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLContactBlockVoidNSStringNSError)block
+{
+    if (self.nextContactWorker)
+    {
+        [self.nextContactWorker doLoadSecurityForObject:contact
+                                           withProgress:progressBlock
+                                               andBlock:block];
+        return;
+    }
+    
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doDeleteSecurityForObject:(nonnull DAOContact*)contact
+                     withProgress:(nullable PTCLProgressBlock)progressBlock
+                         andBlock:(nullable PTCLContactBlockVoidBOOLNSError)block
+{
+    if (self.nextContactWorker)
+    {
+        [self.nextContactWorker doDeleteSecurityForObject:contact
+                                             withProgress:progressBlock
+                                                 andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doSaveSecurity:(nonnull NSString*)security
+             forObject:(nonnull DAOContact*)contact
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLContactBlockVoidBOOLNSError)block
+{
+    if (self.nextContactWorker)
+    {
+        [self.nextContactWorker doSaveSecurity:security
+                                     forObject:contact
+                                  withProgress:progressBlock
+                                      andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doVerifySecurity:(nonnull NSString*)security
+               forObject:(nonnull DAOContact*)contact
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLContactBlockVoidBOOLNSError)block
+{
+    if (self.nextContactWorker)
+    {
+        [self.nextContactWorker doVerifySecurity:security
+                                       forObject:contact
+                                    withProgress:progressBlock
+                                        andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)contactId

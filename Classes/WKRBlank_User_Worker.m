@@ -75,6 +75,72 @@
     [super configure];
 }
 
+#pragma mark - Business Logic / Single Item Security CRUD
+
+- (void)doLoadSecurityForObject:(nonnull DAOUser*)user
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLUserBlockVoidNSStringNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doLoadSecurityForObject:user
+                                        withProgress:progressBlock
+                                            andBlock:block];
+        return;
+    }
+    
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doDeleteSecurityForObject:(nonnull DAOUser*)user
+                     withProgress:(nullable PTCLProgressBlock)progressBlock
+                         andBlock:(nullable PTCLUserBlockVoidBOOLNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doDeleteSecurityForObject:user
+                                          withProgress:progressBlock
+                                              andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doSaveSecurity:(nonnull NSString*)security
+             forObject:(nonnull DAOUser*)user
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLUserBlockVoidBOOLNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doSaveSecurity:security
+                                  forObject:user
+                               withProgress:progressBlock
+                                   andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doVerifySecurity:(nonnull NSString*)security
+               forObject:(nonnull DAOUser*)user
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLUserBlockVoidBOOLNSError)block
+{
+    if (self.nextUserWorker)
+    {
+        [self.nextUserWorker doVerifySecurity:security
+                                    forObject:user
+                                 withProgress:progressBlock
+                                     andBlock:block];
+        return;
+    }
+    
+    block ? block(0, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (BOOL)doCheckForAccessTokenError:(nullable NSData*)errorData

@@ -71,6 +71,72 @@
     [super configure];
 }
 
+#pragma mark - Business Logic / Single Item Security CRUD
+
+- (void)doLoadSecurityForObject:(nonnull DAOLocation*)location
+                   withProgress:(nullable PTCLProgressBlock)progressBlock
+                       andBlock:(nullable PTCLLocationBlockVoidNSStringNSError)block
+{
+    if (self.nextLocationWorker)
+    {
+        [self.nextLocationWorker doLoadSecurityForObject:location
+                                            withProgress:progressBlock
+                                                andBlock:block];
+        return;
+    }
+    
+    block ? block(nil, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doDeleteSecurityForObject:(nonnull DAOLocation*)location
+                     withProgress:(nullable PTCLProgressBlock)progressBlock
+                         andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+{
+    if (self.nextLocationWorker)
+    {
+        [self.nextLocationWorker doDeleteSecurityForObject:location
+                                              withProgress:progressBlock
+                                                  andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doSaveSecurity:(nonnull NSString*)security
+             forObject:(nonnull DAOLocation*)location
+          withProgress:(nullable PTCLProgressBlock)progressBlock
+              andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+{
+    if (self.nextLocationWorker)
+    {
+        [self.nextLocationWorker doSaveSecurity:security
+                                      forObject:location
+                                   withProgress:progressBlock
+                                       andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
+- (void)doVerifySecurity:(nonnull NSString*)security
+               forObject:(nonnull DAOLocation*)location
+            withProgress:(nullable PTCLProgressBlock)progressBlock
+                andBlock:(nullable PTCLLocationBlockVoidBOOLNSError)block
+{
+    if (self.nextLocationWorker)
+    {
+        [self.nextLocationWorker doVerifySecurity:security
+                                        forObject:location
+                                     withProgress:progressBlock
+                                         andBlock:block];
+        return;
+    }
+    
+    block ? block(NO, BLANKWORKERERROR(ERROR_DOMAIN_CLASS)) : (void)nil;
+}
+
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)locationId
