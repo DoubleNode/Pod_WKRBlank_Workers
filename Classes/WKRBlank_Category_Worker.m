@@ -1,9 +1,11 @@
 //
 //  WKRBlank_Category_Worker.m
-//  DoubleNode Core
+//  DoubleNode Blank Workers
 //
 //  Created by Darren Ehlers on 2016/10/16.
-//  Copyright © 2016 Darren Ehlers and DoubleNode, LLC. All rights reserved.
+//  Copyright © 2016 Darren Ehlers and DoubleNode, LLC.
+//
+//  WKRBlank_Workers is released under the MIT license. See LICENSE for details.
 //
 
 #import "WKRBlank_Category_Worker.h"

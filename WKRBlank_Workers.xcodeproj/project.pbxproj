@@ -71,6 +71,7 @@
 /* Begin PBXFileReference section */
 		6A33BAAA22408AF200BAB399 /* __WKR_Blank_Worker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = __WKR_Blank_Worker.h; path = Classes/__WKR_Blank_Worker.h; sourceTree = "<group>"; };
 		6A33BAAB22408AF200BAB399 /* __WKR_Blank_Worker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = __WKR_Blank_Worker.m; path = Classes/__WKR_Blank_Worker.m; sourceTree = "<group>"; };
+		6AC77C6A231867B7004EF336 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6ADDB7C81E56442A001DB127 /* WKRBlank_Workers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKRBlank_Workers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADDB7CC1E56442A001DB127 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6ADDB7CE1E56442A001DB127 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -265,6 +266,7 @@
 		6ADDB7FE1E564452001DB127 /* Cocoapod */ = {
 			isa = PBXGroup;
 			children = (
+				6AC77C6A231867B7004EF336 /* LICENSE */,
 				6ADDB8011E564470001DB127 /* README.md */,
 				6ADDB8021E564470001DB127 /* WKRBlank_Workers.podspec */,
 				6ADDB7FF1E56445F001DB127 /* Classes */,
